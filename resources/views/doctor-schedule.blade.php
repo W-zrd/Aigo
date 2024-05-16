@@ -10,6 +10,7 @@
     <link href="{{ asset('/asset/css/dashboardDoc.css') }}" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="{{ asset('/asset/main.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="{{ asset('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Doctor Dashboard</title>
@@ -35,20 +36,24 @@
         <div class="table-header-date">Date</div>
         <div class="table-header-time">Time</div>
         <div class="table-header-status">Status</div>
+        <div class="table-header-status">Action</div>
+
     </div>
     
     <article class="appointment-row">
-        <div class="patient-info">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-        <div class="patient-name">Moris Johnson</div>
+    <div class="patient-info">
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
+      <div class="patient-name">Moris Johnson</div>
+    </div>
+    <div class="appointment-location">Online</div>
+    <div class="appointment-patient-id">#013456</div>
+    <div class="appointment-date">23.09.2021</div>
+    <div class="appointment-time">10:30PM</div>
+    <div class="appointment-status">Confirmed</div>
+    <div class="chat-icon">
+          <i class="fas fa-comment"></i>
         </div>
-        <div class="appointment-location">Online</div>
-        <div class="appointment-patient-id">#013456</div>
-        <div class="appointment-date">23.09.2021</div>
-        <div class="appointment-time">10:30PM</div>
-        <div class="appointment-status">Confirmed</div>
-        
-    </article>
+  </article>
     
     <article class="appointment-row">
         <div class="patient-info">
@@ -60,6 +65,9 @@
         <div class="appointment-date">23.09.2021</div>
         <div class="appointment-time">10:30PM</div>
         <div class="appointment-status">Confirmed</div>
+        <div class="chat-icon">
+          <i class="fas fa-comment"></i>
+        </div>
         
     </article>
 
@@ -74,6 +82,9 @@
         <div class="appointment-date">23.09.2021</div>
         <div class="appointment-time">10:30PM</div>
         <div class="appointment-status-cancelled">Cancelled</div>
+        <div class="chat-icon">
+          <i class="fas fa-comment"></i>
+        </div>
     </article>
     
     
@@ -87,6 +98,9 @@
         <div class="appointment-date">23.09.2021</div>
         <div class="appointment-time">10:30PM</div>
         <div class="appointment-status">Confirmed</div>
+        <div class="chat-icon">
+          <i class="fas fa-comment"></i>
+        </div>
     </article>
     </section>
     </div>

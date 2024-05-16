@@ -707,3 +707,27 @@ align-self: start;
 }
 
 
+.change-photo-span {
+    font-size: 12px; /* Adjust the font size as needed */
+}
+
+.card {
+  width: 100%;
+}
+
+.card-body{
+  width: 100%;
+}
+.card-full-width {
+  width: 100%;
+}
+
+.content{
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+
+
+
+

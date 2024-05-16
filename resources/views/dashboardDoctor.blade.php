@@ -90,7 +90,7 @@
         </div>
         </div>
     </section>
-    <section class="appointment-container">
+    <section class="appointments-container">
     <header class="appointments-header">
         <h2 class="appointments-title">Appointments</h2>
         <a href="#" class="view-more-link">
@@ -98,7 +98,7 @@
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1101b12b8f7a35f0cd2181e27b04fddc83baf3cd8095916bb541c62ba1875e0e?apiKey=e644a539de5445e499b1d21950fa439b&" alt="" class="arrow-icon" />
         </a>
     </header>
-    
+
     <div class="appointments-table-header">
         <div class="header-name">Name</div>
         <div class="header-location">Location</div>
@@ -106,7 +106,7 @@
         <div class="header-time">Time</div>
         <div class="header-status">Status</div>
     </div>
-    
+
     <div class="appointment-row">
         <div class="patient-info">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
@@ -128,13 +128,13 @@
     <div class="appointment-time">15:30 WIB</div>
     <div class="appointment-status status-cancelled">Cancelled</div>
   </div>
-    
+
     </section>
     </main>
     </div>
   </div>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
