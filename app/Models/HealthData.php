@@ -18,6 +18,7 @@ class HealthData extends Model
         'sleeptime',
         'disease',
         'food',
+        'alergi_makanan',
         'obesity_status',
         'calorie_recommendation',
     ];

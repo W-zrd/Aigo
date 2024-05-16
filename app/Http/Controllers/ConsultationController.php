@@ -30,6 +30,7 @@ class ConsultationController extends Controller
                 'sleeptime' => $request->input('sleeptime'),
                 'disease' => $request->input('disease'),
                 'food' => $request->input('food'),
+                'alergi_makanan' => $request->input('alergi_makanan'),
             ]
         );
         return redirect()->route('jadwal.show');
