@@ -114,18 +114,29 @@
                   </div>
                   {{-- ROW 3 --}}
                   <div class="row">
-                     {{-- Penyakit --}}
+                     {{-- Riwayat Alergi Makanan --}}
                      <div class="col">
                         <div class="mb-3">
-                           <label for="disease" class="form-label">Penyakit yang sedang diderita</label>
-                           <input value="{{old('disease', $healthData->disease ?? '')}}" type="text" class="form-control" id="disease" name="disease" aria-describedby="diseaseHelp" style="border-radius: 20px" placeholder="Flu">
+                           <label for="disease" class="form-label">Riwayat Alergi Makanan</label>
+                           <input value="{{old('disease', $healthData->alergi_makanan ?? '')}}" type="text" class="form-control" id="alergi_makanan" name="alergi_makanan" aria-describedby="alergi_makananHelp" style="border-radius: 20px" placeholder="Flu">
                         </div>
                      </div>
-                     {{-- Makanan --}}
+                     {{-- Kebiasaan Makan --}}
                      <div class="col">
                         <div class="mb-3">
-                           <label for="food" class="form-label">Makanan</label>
+                           <label for="food" class="form-label">Kebiasaan Makan</label>
                            <input value="{{old('food', $healthData->food ?? '')}}" type="text" class="form-control" name="food" id="food" aria-describedby="foodHelp" style="border-radius: 20px" placeholder="Makanan yang sering dimakan dalam 1 bulan terakhir">
+                        </div>
+                     </div>
+                  </div>
+
+                  {{-- ROW 4 --}}
+                  <div class="row">
+                     {{-- Riwayat Penyakit --}}
+                     <div class="col">
+                        <div class="mb-3">
+                           <label for="disease" class="form-label">Riwayat Penyakit</label>
+                           <input value="{{old('disease', $healthData->disease ?? '')}}" type="text" class="form-control" id="disease" name="disease" aria-describedby="diseaseHelp" style="border-radius: 20px" placeholder="Flu">
                         </div>
                      </div>
                   </div>
