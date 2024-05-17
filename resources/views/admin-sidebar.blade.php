@@ -57,16 +57,6 @@
           </a>
         </div>
 
-
-        {{-- SUB-MENU 4: Transaction --}}
-        <div class="btn-group submenu ms-4 ps-2">
-          <span class="material-symbols-outlined"> payment </span>
-          <a href="{{ route('dashboard') }}"
-            onmouseover="this.style.color='#6FFFE9'" 
-            onmouseout="this.style.color='#8296C5'">My Transaction
-          </a>
-        </div>
-
         {{-- MENU 2: SETTINGS --}}
         <div class="menu">
           <aside></aside>
@@ -76,7 +66,7 @@
         {{-- SUB-MENU 1: MY PROFILE --}}
         <div class="btn-group submenu ms-4 ps-2 mb-3">
           <span class="material-symbols-outlined"> settings </span>
-          <a href=""
+          <a href="{{ route('admin.profile') }}"
             onmouseover="this.style.color='#6FFFE9'" 
             onmouseout="this.style.color='#8296C5'"> Admin Profile
           </a>
@@ -100,7 +90,7 @@
         {{-- SUB-MENU 1: Privacy & Policy --}}
         <div class="btn-group submenu ms-4 ps-2">
           <span class="material-symbols-outlined"> policy </span>
-          <a href="" 
+          <a href="{{ route('admin.priv-policy') }}"
             onmouseover="this.style.color='#6FFFE9'" 
             onmouseout="this.style.color='#8296C5'">Privacy & Policy
           </a>
@@ -109,7 +99,7 @@
         {{-- SUB-MENU 2: Terms & Conditions --}}
         <div class="btn-group submenu ms-4 ps-2 mt-3 mb-5">
           <span class="material-symbols-outlined"> contract </span>
-          <a href="" 
+          <a href="{{ route('admin.terms-con') }}"
             onmouseover="this.style.color='#6FFFE9'" 
             onmouseout="this.style.color='#8296C5'">Terms & Conditions
           </a>

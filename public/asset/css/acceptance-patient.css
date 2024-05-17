@@ -1,0 +1,164 @@
+.appointment-card {
+    border-radius: 20px;
+    box-shadow: 0px 8px 30px 0px rgba(37, 36, 34, 0.07);
+    background-color: #fff;
+    align-items: start;
+    gap: 10px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.patient-avatar {
+    background-color: #a4bbe9;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.patient-info {
+    display: flex;
+    margin-top: 8px;
+    flex-direction: column;
+}
+
+.patient-name {
+    color: #1c2541;
+    font: 500 16px/75% Poppins, sans-serif;
+}
+
+.patient-email {
+    color: #8296c5;
+    margin-top: 2px;
+    font: 400 14px/86% Poppins, sans-serif;
+}
+
+.appointment-details {
+    display: flex;
+    flex-direction: column;
+    max-width: 330px;
+    font-size: 14px;
+    color: #384c7f;
+    font-weight: 400;
+}
+
+.location-info {
+    display: flex;
+    gap: 10px;
+}
+
+.location-icon {
+    width: 18px;
+    fill: #384c7f;
+}
+
+.location-text {
+    font-family: Poppins, sans-serif;
+    flex-grow: 1;
+    margin: auto 0;
+}
+
+.date-time-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.date-info {
+    display: flex;
+    gap: 6px;
+    margin: auto -5px auto 0;
+}
+
+.date-icon {
+    width: 20px;
+    stroke: #384c7f;
+}
+
+.date-text {
+    font-family: Poppins, sans-serif;
+    margin: auto 0;
+}
+
+.time-info {
+    display: flex;
+    gap: 9px;
+}
+
+.time-icon {
+    width: 20px;
+    fill: #384c7f;
+}
+
+.time-text {
+    font-family: Poppins, sans-serif;
+    margin: auto 0;
+}
+
+.approve-button {
+    border-radius: 50px;
+    background-color: var(--Green-2, #51dbd3);
+    display: flex;
+    gap: 10px;
+    padding: 4px 20px;
+    text-decoration: none;
+}
+
+.approve-button:hover {
+    background-color: #37b3b7;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.approve-icon {
+    width: 40px;
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    fill: #fff;
+    filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.08));
+}
+
+.approve-text {
+    margin: auto 0;
+    color: var(--Green-5, #15647a);
+    font: 500 14px/193% Poppins, sans-serif;
+}
+
+.decline-button {
+    border-radius: 50px;
+    background-color: #faced7;
+    display: flex;
+    gap: 5px;
+    padding: 4px 20px;
+    text-decoration: none;
+}
+
+.decline-button:hover {
+    background-color: #f7b8c5;
+}
+
+.decline-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.decline-icon {
+    width: 40px;
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    fill: #fff;
+    filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.08));
+}
+
+.decline-text {
+    margin: auto 0;
+    color: #cc2a2a;
+    font: 500 14px/193% Poppins, sans-serif;
+}

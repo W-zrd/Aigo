@@ -31,6 +31,19 @@ Route::get('/contact', function () {
 });
 
 
+Route::get('/customer-transaction', function () {
+    return view('customer-transaction');
+});
+
+Route::get('/customer-profile', function () {
+    return view('customer-profile');
+});
+
+Route::get('/doctor-profile', function () {
+    return view('doctor-profile');
+});
+
+
 Route::post('/strava/authorize', [StravaController::class, 'authorize'])->name('strava.authorize');
 Route::get('/strava/callback', [StravaController::class, 'handleCallback'])->name('strava.callback');
 
@@ -48,6 +61,11 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     Route::post('/health-data', [ConsultationController::class, 'storeHealthDataForm'])->name('health-data.store');
     Route::get('/jadwal', [ConsultationController::class, 'showJadwalForm'])->name('jadwal.show');
     Route::post('/consultation', [ConsultationController::class, 'storeConsultation'])->name('consultation.store');
+    Route::get('/profile', function () {return view('customer-profile');})->name('customer.profile');
+    Route::get('/schedule', function () {return view('customer-schedule');})->name('customer.schedule');
+    Route::get('/transaction', function () {return view('customer-transaction');})->name('customer.transaction');
+    Route::get('/priv-policy', function () {return view('privacy-policy-client');})->name('customer.priv-policy');
+    Route::get('/terms-con', function () {return view('terms-con-client');})->name('customer.terms-con');
 });
 
 
@@ -59,6 +77,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/delete/user/{id}', [AdminController::class, 'delete'])->name('delete-user');
     Route::get('/user/{id}', [AdminController::class, 'showUserDetail'])->name('show-user');
     Route::post('/update/user/{id}', [AdminController::class, 'updateData'])->name('update-user');
+    Route::get('/admin/profile', function () {return view('admin-profile');})->name('admin.profile');
+    Route::get('/admin/priv-policy', function () {return view('privacy-policy-admin');})->name('admin.priv-policy');
+    Route::get('/admin/terms-con', function () {return view('terms-con-admin');})->name('admin.terms-con');
+    
 });
 
 // 3. DOCTOR PAGES
@@ -70,6 +92,13 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
     Route::get('/schedule', function () {
         return view('doctor-schedule');
     })->name('doctor.schedule');
+
+    Route::get('/transaction', function () {return view('doctor-transaction');})->name('doctor.transaction');
+
+    Route::get('/profile', function () {return view('doctor-profile');})->name('doctor.profile');
+    Route::get('/doctor/priv-policy', function () {return view('privacy-policy-doctor');})->name('doctor.priv-policy');
+    Route::get('/doctor/terms-con', function () {return view('terms-con-doctor');})->name('doctor.terms-con');
+
 });
 
 
