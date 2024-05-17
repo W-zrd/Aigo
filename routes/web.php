@@ -96,8 +96,8 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
     Route::get('/transaction', function () {return view('doctor-transaction');})->name('doctor.transaction');
 
     Route::get('/profile', function () {return view('doctor-profile');})->name('doctor.profile');
-    Route::get('/admin/priv-policy', function () {return view('privacy-policy-doctor');})->name('admin.priv-policy');
-    Route::get('/admin/terms-con', function () {return view('terms-con-doctor');})->name('admin.terms-con');
+    Route::get('/doctor/priv-policy', function () {return view('privacy-policy-doctor');})->name('doctor.priv-policy');
+    Route::get('/doctor/terms-con', function () {return view('terms-con-doctor');})->name('doctor.terms-con');
 
 });
 
