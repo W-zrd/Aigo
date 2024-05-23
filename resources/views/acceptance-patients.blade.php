@@ -56,12 +56,15 @@
 
                       <div class="row mt-4">
                           <div class="col mt-2">
-                              <a class="approve-button" href="#">
-                                  <div class="icon-wrapper">
-                                      <img src="{{asset('asset/svg/approve-icon.svg')}}" alt="Approve icon" class="approve-icon" />
-                                  </div>
-                                  <div class="approve-text">Approve</div>
-                              </a>
+                            <form action="{{ route('doctor.approve-consultation', ['consultationId' => $consultation->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="approve-button">
+                                    <div class="icon-wrapper">
+                                        <img src="{{asset('asset/svg/approve-icon.svg')}}" alt="Approve icon" class="approve-icon" />
+                                    </div>
+                                    <div class="approve-text">Approve</div>
+                                </button>
+                            </form>
                           </div>
 
                           <div class="col mt-2">

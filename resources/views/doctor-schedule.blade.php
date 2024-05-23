@@ -18,92 +18,62 @@
   <body>
   @include('doctor-sidebar')
   <div class="container-flex" >
-    <div class="content">
-        <h2 class="schedule-heading">Schedule</h2>
-        <section class="appointments-container">
-  <header class="appointments-header">
-    <h2 class="appointments-title">Appointments</h2>
-    <div class="appointments-icons">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1101c7a3233cca792885dc6960fc213d42926998929b5978ab43e109358f3639?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Icon" class="icon" loading="lazy" />
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1b0e6fc65d53aa06c8eb18bf9196c47d97ef8ef95dce33432650db38eac1722?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Icon" class="icon" loading="lazy" />
-    </div>
-    </header>
     
-    <div class="appointments-table-header">
-        <div class="table-header-name">Name</div>
-        <div class="table-header-location">Location</div>
-        <div class="table-header-patient-id">Patient ID</div>
-        <div class="table-header-date">Date</div>
-        <div class="table-header-time">Time</div>
-        <div class="table-header-status">Status</div>
-        <div class="table-header-status">Action</div>
+    <div class="m-5 user-table">
+      <table id="example" class="display table">
+          <thead>
+              <tr>
+                  <th>Nama Lengkap</th>
+                  <th>Lokasi</th>
+                  <th>Gender</th>
+                  <th>Email</th>
+                  <th>Berat Badan</th>
+                  <th>Tinggi Badan</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
 
-    </div>
-    
-    <article class="appointment-row">
-    <div class="patient-info">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-      <div class="patient-name">Moris Johnson</div>
-    </div>
-    <div class="appointment-location">Online</div>
-    <div class="appointment-patient-id">#013456</div>
-    <div class="appointment-date">23.09.2021</div>
-    <div class="appointment-time">10:30PM</div>
-    <div class="appointment-status">Confirmed</div>
-    <div class="chat-icon">
-          <i class="fas fa-comment"></i>
-        </div>
-  </article>
-    
-    <article class="appointment-row">
-        <div class="patient-info">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-        <div class="patient-name">Moris Johnson</div>
-        </div>
-        <div class="appointment-location">Online</div>
-        <div class="appointment-patient-id">#013456</div>
-        <div class="appointment-date">23.09.2021</div>
-        <div class="appointment-time">10:30PM</div>
-        <div class="appointment-status">Confirmed</div>
-        <div class="chat-icon">
-          <i class="fas fa-comment"></i>
-        </div>
-        
-    </article>
+          
+          <tbody>
+            @foreach ($approvedConsultations as $consultation)
+              <tr>
+                <td>{{ $consultation->patient->name }}</td>
+                <td>{{ $consultation->location }}</td>
+                <td>{{ $consultation->patient->gender }}</td>
+                <td>{{ $consultation->patient->email }}</td>
+                <td>{{ $consultation->patient->healthDatas->last()->weight }}</td>
+                <td>{{ $consultation->patient->healthDatas->last()->height }}</td>
+                  {{-- <td>{{ $item->updated_at->format('d F Y') }}</td> --}}
+                  <td>
+                    <a href="/user/item->id" class="material-symbols-outlined me-2" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">info</a>
+                    <a href="/aigochat/{{$consultation->patient->id}}" class="material-symbols-outlined text-success" >chat</a>
+                  </td>
 
-    
-    <article class="appointment-row">
-        <div class="patient-info">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-        <div class="patient-name">Moris Johnson</div>
-        </div>
-        <div class="appointment-location">Online</div>
-        <div class="appointment-patient-id">#013456</div>
-        <div class="appointment-date">23.09.2021</div>
-        <div class="appointment-time">10:30PM</div>
-        <div class="appointment-status-cancelled">Cancelled</div>
-        <div class="chat-icon">
-          <i class="fas fa-comment"></i>
-        </div>
-    </article>
-    
-    
-    <article class="appointment-row">
-        <div class="patient-info">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-        <div class="patient-name">Moris Johnson</div>
-        </div>
-        <div class="appointment-location">RS. Telkom Medika Bandung</div>
-        <div class="appointment-patient-id">#013456</div>
-        <div class="appointment-date">23.09.2021</div>
-        <div class="appointment-time">10:30PM</div>
-        <div class="appointment-status">Confirmed</div>
-        <div class="chat-icon">
-          <i class="fas fa-comment"></i>
-        </div>
-    </article>
-    </section>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">User Information</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </tr>
+            @endforeach
+          </tbody>
+       
+      </table>
     </div>
+
   </div>
 
     

@@ -55,6 +55,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     Route::get('/dashboard', [DashboardController::class, 'dashboardClient'])->name('dashboard')->middleware('role');
     Route::get('/activity-report', [DashboardController::class, 'activityReport'])->name('activity-report');
     Route::get('/result', [DashboardController::class, 'result'])->name('result');
+    Route::get('/schedule', [DashboardController::class, 'schedule'])->name('customer.schedule');
 
     // CONSULTATION CONTROLLER
     Route::get('/health-data', [ConsultationController::class, 'showHealthDataForm'])->name('health-data.show');
@@ -62,7 +63,6 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     Route::get('/jadwal', [ConsultationController::class, 'showJadwalForm'])->name('jadwal.show');
     Route::post('/consultation', [ConsultationController::class, 'storeConsultation'])->name('consultation.store');
     Route::get('/profile', function () {return view('customer-profile');})->name('customer.profile');
-    Route::get('/schedule', function () {return view('customer-schedule');})->name('customer.schedule');
     Route::get('/transaction', function () {return view('customer-transaction');})->name('customer.transaction');
     Route::get('/priv-policy', function () {return view('privacy-policy-client');})->name('customer.priv-policy');
     Route::get('/terms-con', function () {return view('terms-con-client');})->name('customer.terms-con');
@@ -99,6 +99,8 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
     Route::get('/doctor/priv-policy', function () {return view('privacy-policy-doctor');})->name('doctor.priv-policy');
     Route::get('/doctor/terms-con', function () {return view('terms-con-doctor');})->name('doctor.terms-con');
 
+    Route::post('/approve-consultation/{consultationId}', [DoctorController::class, 'approveConsultation'])->name('doctor.approve-consultation');
+    Route::get('/schedule', [DoctorController::class, 'schedule'])->name('doctor.schedule');
 });
 
 
