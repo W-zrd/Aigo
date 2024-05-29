@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\StravaController;
+use App\Http\Controllers\ConsultationController;
 use App\Models\PhysicalActivity;
 use App\Models\HealthData;
+use App\Models\Notification;
+use App\Models\Consultation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
@@ -146,6 +149,25 @@ class DashboardController extends Controller
         ));
     }
     
+    public function schedule()
+    {
+        $user = auth()->user();
+    
+        $approvedConsultations = Consultation::where('patient_id', $user->id)
+        ->where('consultation_status', 'approved')
+        ->with('doctor')
+        ->get();
+    
+        return view('customer-schedule', compact('approvedConsultations'));
+    }
+
+    public function notifications()
+    {
+        $patient = auth()->user();
+        $notifications = Notification::where('user_id', $patient->id)->orderBy('created_at', 'desc')->get();
+
+        return view('patient-notifications', compact('notifications'));
+    }
 
     public function consultation()
     {

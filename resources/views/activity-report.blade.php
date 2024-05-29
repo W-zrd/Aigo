@@ -157,7 +157,7 @@
                                         @elseif ($data->weight_difference < 0)
                                             <div class="change-value text-success">{{ $data->weight_difference }} kg</div>
                                         @else
-                                            <div class="change-value text-body-tertiary">{{ $data->weight_difference }} kg</div>
+                                            <div class="change-value text-body-tertiary">+{{ $data->weight_difference }} kg</div>
                                         @endif
                                     </div>
                                 </div>

@@ -48,16 +48,7 @@
           </a>
         </div>
 
-        {{-- SUB-MENU 2: Request Consultation --}}
-        <div class="btn-group submenu ms-4 ps-2  mb-3">
-          <span class="material-symbols-outlined"> diversity_1 </span>
-          <a href="{{ route('aigochat') }}"
-            onmouseover="this.style.color='#6FFFE9'" 
-            onmouseout="this.style.color='#8296C5'">Online Consultation
-          </a>
-        </div>
-
-        {{-- SUB-MENU 3: Consultation Schedule --}}
+        {{-- SUB-MENU 2: Consultation Schedule --}}
         <div class="btn-group submenu ms-4 ps-2  mb-3">
           <span class="material-symbols-outlined"> calendar_month </span>
           <a href="{{ route('doctor.schedule') }}"
@@ -66,7 +57,7 @@
           </a>
         </div>
 
-        {{-- SUB-MENU 4: Transaction --}}
+        {{-- SUB-MENU 3: Transaction --}}
         <div class="btn-group submenu ms-4 ps-2">
           <span class="material-symbols-outlined"> payment </span>
           <a href="{{ route('doctor.transaction') }}"
@@ -93,7 +84,7 @@
         {{-- SUB-MENU 2: HISTORY --}}
         <div class="btn-group submenu ms-4 ps-2">
           <span class="material-symbols-outlined"> history </span>
-          <a href=""
+          <a href="{{route('doctor.notifications')}}"
             onmouseover="this.style.color='#6FFFE9'" 
             onmouseout="this.style.color='#8296C5'">Log & History
           </a>

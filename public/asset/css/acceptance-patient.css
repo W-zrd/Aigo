@@ -4,7 +4,7 @@
     background-color: #fff;
     align-items: start;
     gap: 10px;
-    max-width: 600px;
+    max-width: 500px;
     min-width: 300px;
 }
 
@@ -96,11 +96,12 @@
 }
 
 .approve-button {
+    border-style: none;
     border-radius: 50px;
     background-color: var(--Green-2, #51dbd3);
     display: flex;
-    gap: 10px;
-    padding: 4px 20px;
+    gap: 8px;
+    padding: 2px 46px;
     text-decoration: none;
 }
 
@@ -130,11 +131,12 @@
 }
 
 .decline-button {
+    border-style: none;
     border-radius: 50px;
     background-color: #faced7;
     display: flex;
-    gap: 5px;
-    padding: 4px 20px;
+    gap: 8px;
+    padding: 2px 50px;
     text-decoration: none;
 }
 
