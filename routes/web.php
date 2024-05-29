@@ -56,6 +56,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     Route::get('/activity-report', [DashboardController::class, 'activityReport'])->name('activity-report');
     Route::get('/result', [DashboardController::class, 'result'])->name('result');
     Route::get('/schedule', [DashboardController::class, 'schedule'])->name('customer.schedule');
+    Route::get('/notifications', [DashboardController::class, 'notifications'])->name('client.notifications');
 
     // CONSULTATION CONTROLLER
     Route::get('/health-data', [ConsultationController::class, 'showHealthDataForm'])->name('health-data.show');
@@ -86,8 +87,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 // 3. DOCTOR PAGES
 Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', [DoctorController::class, 'dashboard'])->name('doctor.dashboard')->middleware('role');
-
+    Route::post('/decline-consultation/{consultationId}', [DoctorController::class, 'declineConsultation'])->name('doctor.decline-consultation');
     Route::get('/patient-acceptance', [DoctorController::class, 'patientAcceptance'])->name('doctor.patient-acceptance');
+    Route::get('/notifications', [DoctorController::class, 'notifications'])->name('doctor.notifications');
 
     Route::get('/schedule', function () {
         return view('doctor-schedule');

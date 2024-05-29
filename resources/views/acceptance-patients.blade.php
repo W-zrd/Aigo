@@ -68,13 +68,16 @@
                           </div>
 
                           <div class="col mt-2">
-                              <a class="decline-button" href="#">
-                                  <div class="decline-icon">
-                                      <img src="{{asset('asset/svg/decline-icon.svg')}}" alt="" class="decline-icon" />
-                                  </div>
-                                  <div class="decline-text">Decline</div>
-                              </a>
-                          </div>
+                            <form action="{{ route('doctor.decline-consultation', ['consultationId' => $consultation->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="decline-button">
+                                    <div class="decline-icon">
+                                        <img src="{{asset('asset/svg/decline-icon.svg')}}" alt="decline-icon" class="decline-icon" />
+                                    </div>
+                                    <div class="decline-text">Decline</div>
+                                </button>
+                            </form>
+                        </div>
                       </div>
                   </div>
               </div>

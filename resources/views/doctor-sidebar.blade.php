@@ -84,7 +84,7 @@
         {{-- SUB-MENU 2: HISTORY --}}
         <div class="btn-group submenu ms-4 ps-2">
           <span class="material-symbols-outlined"> history </span>
-          <a href=""
+          <a href="{{route('doctor.notifications')}}"
             onmouseover="this.style.color='#6FFFE9'" 
             onmouseout="this.style.color='#8296C5'">Log & History
           </a>

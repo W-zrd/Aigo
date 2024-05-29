@@ -41,8 +41,8 @@
                 <td>{{ $consultation->location }}</td>
                 <td>{{ $consultation->patient->gender }}</td>
                 <td>{{ $consultation->patient->email }}</td>
-                <td>{{ $consultation->patient->healthDatas->last()->weight }}</td>
-                <td>{{ $consultation->patient->healthDatas->last()->height }}</td>
+                <td>{{ $consultation->patient->healthDatas->last()->weight ?? 'N/A'}} </td>
+                <td>{{ $consultation->patient->healthDatas->last()->height ?? 'N/A'}}</td>
                   {{-- <td>{{ $item->updated_at->format('d F Y') }}</td> --}}
                   <td>
                     <a href="/user/item->id" class="material-symbols-outlined me-2" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">info</a>

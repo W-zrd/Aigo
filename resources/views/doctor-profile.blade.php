@@ -34,8 +34,8 @@
                   </div>
                   <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                     <div class="text-center text-sm-left mb-2 mb-sm-0">
-                      <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
-                      <p class="mb-0">@johnny.s</p>
+                      <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{auth()->user()->name}}</h4>
+                      <p class="mb-0">{{auth()->user()->email}}</p>
                       <div class="mt-2">
                         <button class="btn btn-primary" type="button">
                           <i class="fa fa-fw fa-camera"></i>
@@ -61,13 +61,13 @@
                             <div class="col">
                               <div class="form-group">
                                 <label>Full Name</label>
-                                <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+                                <input class="form-control" type="text" name="name" placeholder="Name" value="{{auth()->user()->name}}">
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-group">
                                 <label>Username</label>
-                                <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+                                <input class="form-control" type="text" name="username" placeholder="username" value="{{auth()->user()->username}}">
                               </div>
                             </div>
                           </div>
@@ -75,18 +75,11 @@
                             <div class="col">
                               <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="text" placeholder="user@example.com">
+                                <input class="form-control" type="text" placeholder="user@example.com" value="{{auth()->user()->email}}">
                               </div>
                             </div>
                           </div>
-                          <div class="row">
-                            <div class="col mb-3">
-                              <div class="form-group">
-                                <label>About</label>
-                                <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
-                              </div>
-                            </div>
-                          </div>
+                          <br>
                         </div>
                       </div>
                       <div class="row">

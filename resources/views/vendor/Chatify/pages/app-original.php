@@ -58,12 +58,7 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    @if (Auth::user()->user_role == 'user')
-                        <a href="{{route('customer.schedule')}}"><i class="fas fa-home"></i></a>
-                    @else
-                        <a href="{{route('doctor.schedule')}}"><i class="fas fa-home"></i></a>
-                    @endif
-                    
+                    <a href="/"><i class="fas fa-home"></i></a>
                     <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>
