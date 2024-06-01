@@ -26,7 +26,7 @@ class ConsultationFactory extends Factory
     public function definition(): array
     {
         // Get a random patient from the users table
-        $patient = User::where('user_role', 'patient')->inRandomOrder()->first();
+        $patient = User::where('user_role', 'user')->inRandomOrder()->first();
 
         // Get a random doctor from the users table
         $doctor = User::where('user_role', 'doctor')->inRandomOrder()->first();
@@ -37,7 +37,7 @@ class ConsultationFactory extends Factory
             'consultation_date' => $this->faker->dateTimeBetween('-1 year', '+1 year')->format('Y-m-d'),
             'consultation_time' => $this->faker->time('H:i:s'),
             'location' => $this->faker->city,
-            'consultation_status' => $this->faker->randomElement(['pending', 'cancelled', 'approved']),
+            'consultation_status' => $this->faker->randomElement(['pending', 'cancelled', 'approved', 'finished']),
         ];
     }
 }

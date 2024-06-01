@@ -45,27 +45,9 @@
                 <td>{{ $consultation->patient->healthDatas->last()->height ?? 'N/A'}}</td>
                   {{-- <td>{{ $item->updated_at->format('d F Y') }}</td> --}}
                   <td>
-                    <a href="/user/item->id" class="material-symbols-outlined me-2" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">info</a>
+                    <a href="{{ route('doctor.show-consultation-result-form', $consultation->patient->id) }}" class="material-symbols-outlined me-2">assignment_add</a>
                     <a href="/aigochat/{{$consultation->patient->id}}" class="material-symbols-outlined text-success" >chat</a>
                   </td>
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">User Information</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          ...
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
               </tr>
             @endforeach

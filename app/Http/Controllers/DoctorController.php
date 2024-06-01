@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Consultation;
+use App\Models\Result;
 use App\Models\Notification;
 
 class DoctorController extends Controller
@@ -86,5 +87,40 @@ class DoctorController extends Controller
             ->get();
 
         return view('doctor-schedule', compact('approvedConsultations'));
+    }
+
+    public function showConsultationResultForm($patientId)
+    {
+        return view('doctor-result-form', compact('patientId'));
+    }
+
+    public function storeConsultationResult(Request $request)
+    {
+        $validatedData = $request->validate([
+            'doctor_id' => 'required|exists:users,id',
+            'patient_id' => 'required|exists:users,id',
+            'jarak_lari' => 'required|integer',
+            'sleeptime' => 'required|numeric',
+            'food' => 'required|string',
+            'unrecommended_food' => 'required|string',
+            'notes' => 'required|string',
+        ]);
+    
+        $consultation = Consultation::where('doctor_id', $validatedData['doctor_id'])
+            ->where('patient_id', $validatedData['patient_id'])
+            ->where('consultation_status', 'approved')
+            ->first();
+    
+        if ($consultation) {
+            $validatedData['consultation_id'] = $consultation->id;
+            Result::create($validatedData);
+    
+            $consultation->consultation_status = 'finished';
+            $consultation->save();
+    
+            return redirect()->route('doctor.schedule')->with('success', 'Consultation result submitted successfully.');
+        }
+    
+        return redirect()->back()->with('error', 'Consultation not found or already finished.');
     }
 }

@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(1)->create([
-            'user_role' => 'patient',
+        User::factory()->count(2)->create([
+            'user_role' => 'user',
         ]);
 
         User::factory()->count(1)->create([

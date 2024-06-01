@@ -57,6 +57,8 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     Route::get('/result', [DashboardController::class, 'result'])->name('result');
     Route::get('/schedule', [DashboardController::class, 'schedule'])->name('customer.schedule');
     Route::get('/notifications', [DashboardController::class, 'notifications'])->name('client.notifications');
+    Route::get('/results',[DashboardController::class, 'consultationResults'])->name('patient.consultation-results');
+    Route::get('/result/{consultationId}', [DashboardController::class, 'consultationResultDetails'])->name('patient.result-details');
 
     // CONSULTATION CONTROLLER
     Route::get('/health-data', [ConsultationController::class, 'showHealthDataForm'])->name('health-data.show');
@@ -103,6 +105,9 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
 
     Route::post('/approve-consultation/{consultationId}', [DoctorController::class, 'approveConsultation'])->name('doctor.approve-consultation');
     Route::get('/schedule', [DoctorController::class, 'schedule'])->name('doctor.schedule');
+
+    Route::get('/consultation-result/{patientId}', [DoctorController::class, 'showConsultationResultForm'])->name('doctor.show-consultation-result-form');
+    Route::post('/consultation-result', [DoctorController::class, 'storeConsultationResult'])->name('doctor.store-consultation-result');
 });
 
 

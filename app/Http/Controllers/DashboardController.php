@@ -7,6 +7,7 @@ use App\Http\Controllers\StravaController;
 use App\Http\Controllers\ConsultationController;
 use App\Models\PhysicalActivity;
 use App\Models\HealthData;
+use App\Models\Result;
 use App\Models\Notification;
 use App\Models\Consultation;
 use Carbon\Carbon;
@@ -177,5 +178,26 @@ class DashboardController extends Controller
     public function result()
     {
         return view('result');
+    }
+
+    public function consultationResults()
+    {
+        $patient = auth()->user();
+        $consultations = Consultation::where('patient_id', $patient->id)
+            ->where('consultation_status', 'finished')
+            ->with('doctor')
+            ->orderBy('consultation_date', 'desc')
+            ->get();
+    
+        return view('consultation-results', compact('consultations'));
+    }
+
+    public function consultationResultDetails($consultationId)
+    {
+        $patient = auth()->user();
+        $result = Result::where('consultation_id', $consultationId)
+        ->where('patient_id', $patient->id)
+        ->first();
+        return view('consultation-result-details', compact('result'));
     }
 }
