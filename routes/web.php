@@ -31,17 +31,13 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/customer-transaction', function () {
-    return view('customer-transaction');
+
+
+Route::get('/customer-result', function () {
+    return view('customer-result');
 });
 
-Route::get('/customer-profile', function () {
-    return view('customer-profile');
-});
 
-Route::get('/doctor-profile', function () {
-    return view('doctor-profile');
-});
 
 
 Route::post('/strava/authorize', [StravaController::class, 'authorize'])->name('strava.authorize');
@@ -63,6 +59,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     Route::post('/health-data', [ConsultationController::class, 'storeHealthDataForm'])->name('health-data.store');
     Route::get('/jadwal', [ConsultationController::class, 'showJadwalForm'])->name('jadwal.show');
     Route::post('/consultation', [ConsultationController::class, 'storeConsultation'])->name('consultation.store');
+    Route::get('/recomendation', function () {return view('customer-result');})->name('customer.recomendation');
     Route::get('/profile', function () {return view('customer-profile');})->name('customer.profile');
     Route::get('/transaction', function () {return view('customer-transaction');})->name('customer.transaction');
     Route::get('/priv-policy', function () {return view('privacy-policy-client');})->name('customer.priv-policy');
@@ -91,10 +88,8 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
     Route::get('/patient-acceptance', [DoctorController::class, 'patientAcceptance'])->name('doctor.patient-acceptance');
     Route::get('/notifications', [DoctorController::class, 'notifications'])->name('doctor.notifications');
 
-    Route::get('/schedule', function () {
-        return view('doctor-schedule');
-    })->name('doctor.schedule');
-
+    Route::get('/schedule', function () {return view('doctor-schedule');})->name('doctor.schedule');
+    Route::get('/recomendation', function () {return view('doctor-recomendation');})->name('doctor.recomendation');
     Route::get('/transaction', function () {return view('doctor-transaction');})->name('doctor.transaction');
 
     Route::get('/profile', function () {return view('doctor-profile');})->name('doctor.profile');
