@@ -50,18 +50,15 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     // DASHBOARD CONTROLLER
     Route::get('/dashboard', [DashboardController::class, 'dashboardClient'])->name('dashboard')->middleware('role');
     Route::get('/activity-report', [DashboardController::class, 'activityReport'])->name('activity-report');
-    Route::get('/result', [DashboardController::class, 'result'])->name('result');
     Route::get('/schedule', [DashboardController::class, 'schedule'])->name('customer.schedule');
     Route::get('/notifications', [DashboardController::class, 'notifications'])->name('client.notifications');
-    Route::get('/results',[DashboardController::class, 'consultationResults'])->name('patient.consultation-results');
-    Route::get('/result/{consultationId}', [DashboardController::class, 'consultationResultDetails'])->name('patient.result-details');
+    Route::get('/results', [DashboardController::class, 'consultationResults'])->name('patient.consultation-results');
 
     // CONSULTATION CONTROLLER
     Route::get('/health-data', [ConsultationController::class, 'showHealthDataForm'])->name('health-data.show');
     Route::post('/health-data', [ConsultationController::class, 'storeHealthDataForm'])->name('health-data.store');
     Route::get('/jadwal', [ConsultationController::class, 'showJadwalForm'])->name('jadwal.show');
     Route::post('/consultation', [ConsultationController::class, 'storeConsultation'])->name('consultation.store');
-    Route::get('/recomendation', function () {return view('customer-result');})->name('customer.recomendation');
     Route::get('/profile', function () {return view('customer-profile');})->name('customer.profile');
     Route::get('/transaction', function () {return view('customer-transaction');})->name('customer.transaction');
     Route::get('/priv-policy', function () {return view('privacy-policy-client');})->name('customer.priv-policy');

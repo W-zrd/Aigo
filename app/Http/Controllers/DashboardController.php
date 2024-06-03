@@ -28,6 +28,10 @@ class DashboardController extends Controller
             $activity->calories_burned = $activity->calculateCaloriesBurned();
             return $activity;
         });
+        
+        // Loop through activities and print out the values
+        
+        $totalDistance = $activities->sum('distance');
 
         if ($healthData) {
             // Check if obesity_status is null
@@ -47,7 +51,7 @@ class DashboardController extends Controller
             }
         }
     
-        return view('dashboardClient', compact('activities', 'healthData'));
+        return view('dashboardClient', compact('activities', 'healthData', 'totalDistance'));
     }
     
     private function predictObesity($healthData, $user)
@@ -175,29 +179,17 @@ class DashboardController extends Controller
         return view('health-data');
     }
 
-    public function result()
-    {
-        return view('result');
-    }
 
     public function consultationResults()
     {
         $patient = auth()->user();
         $consultations = Consultation::where('patient_id', $patient->id)
             ->where('consultation_status', 'finished')
-            ->with('doctor')
+            ->with('doctor', 'result')
             ->orderBy('consultation_date', 'desc')
             ->get();
-    
-        return view('consultation-results', compact('consultations'));
+        
+        return view('customer-result', compact('consultations'));
     }
 
-    public function consultationResultDetails($consultationId)
-    {
-        $patient = auth()->user();
-        $result = Result::where('consultation_id', $consultationId)
-        ->where('patient_id', $patient->id)
-        ->first();
-        return view('consultation-result-details', compact('result'));
-    }
 }
