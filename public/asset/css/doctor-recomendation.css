@@ -1,0 +1,42 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0; 
+    padding: 0; 
+  }
+  
+  .container {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center; 
+  }
+  
+  .content {
+    padding-left: 250px;
+    flex: 1; 
+    max-width: 100%; 
+  }
+  
+  .patient-list {
+    margin: 20px;
+    width: 100%; 
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-recommendation {
+    margin-right: 10px;
+  }
+  
+  .modal-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-title span {
+    margin-right: 10px;
+  }
+  
