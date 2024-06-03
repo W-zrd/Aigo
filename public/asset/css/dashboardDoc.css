@@ -55,8 +55,8 @@
     justify-content: center;
     border-radius: 20px;
     box-shadow: 0 8px 30px 0 rgba(37, 36, 34, 0.07);
-    background-color: #fff;
     display: flex;
+    background-color: #fff;
     width: 75%;
     flex-grow: 0.5;
     flex-direction: column;
@@ -102,6 +102,8 @@
     display: flex;
     flex-direction: column;
     padding: 9px 14px;
+    align-items: center;
+    text-align: center;
 }
 
 @media (max-width: 991px) {
@@ -111,12 +113,12 @@
 }
 
 .patient-stat-value {
-    color: var(--Main-Colors-Secondary, #3a3f51);
+    color: var(--Main-Colors-Secondary, #F5F5F5);
     font: 600 18px/144% Inter, sans-serif;
 }
 
 .patient-stat-label {
-    color: var(--Neutral-500, #737373);
+    color: var(--Neutral-500, #F5F5F5);
     margin-top: 4px;
     font: 400 12px/133% Inter, sans-serif;
 }
@@ -371,7 +373,7 @@
     width: 95%;
     flex-direction: column;
     padding: 39px 57px;
-    margin: 20px 0px 0px 55px;
+    margin: 20px 30px 30px 55px;
 }
 
 @media (max-width: 991px) {
@@ -1485,3 +1487,9 @@
 .card-full-width {
     width: 100%;
 }
+
+.chart-container {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }

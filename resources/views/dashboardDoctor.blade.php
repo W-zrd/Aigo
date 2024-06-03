@@ -24,17 +24,19 @@
         <div class="content-row">
         <div class="content-column">
             <div class="patient-stats" >
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/030a1f6bffadffc6ce4ec13f1bd97e7576bd78d674f5fb6de947cdf5a33aa29d?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Patient icon" class="patient-icon" />
+            <div class="chart-container">
+                  <canvas id="patientChart"></canvas>
+                </div>
             <div class="patient-stats-row">
-                <div class="patient-stat">
+                <div class="patient-stat" style="background-color:#8DB3FF">
                 <div class="patient-stat-value">250</div>
                 <div class="patient-stat-label">Normal</div>
                 </div>
-                <div class="patient-stat">
+                <div class="patient-stat" style="background-color:#F45D78" >
                 <div class="patient-stat-value">150</div>
                 <div class="patient-stat-label">Overweight</div>
                 </div>
-                <div class="patient-stat">
+                <div class="patient-stat" style="background-color:#5DF4C7">
                 <div class="patient-stat-value">100</div>
                 <div class="patient-stat-label">Unknown</div>
                 </div>
@@ -136,5 +138,36 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      const ctx = document.getElementById('patientChart').getContext('2d');
+      const patientChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [250, 150, 100],
+            backgroundColor: [
+            'rgba(141, 179, 255, 0.2)',  
+            'rgba(244, 93, 120, 0.2)',
+            'rgba(93, 244, 199, 0.2)'
+          ],
+          borderColor: [
+            'rgba(141, 179, 255, 1)', 
+            'rgba(244, 93, 120, 1)',
+            'rgba(93, 244, 199, 1)'
+          ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Patient Weight Categories'
+            }
+          }
+        },
+      });
+    </script>
   </body>
 </html>
