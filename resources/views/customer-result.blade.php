@@ -31,7 +31,7 @@
                   <footer class="card-body">
                     <section class="doctor-info">
                       <span class="doctor-name">{{ $consultation->doctor->name }}</span>
-                      <a href="mailto:dokter@email.com" class="doctor-email" aria-label="dokter@email.com">{{ $consultation->doctor->email }}</a>
+                      <a href="mailto:{{ $consultation->doctor->email }}" class="doctor-email" aria-label="">{{ $consultation->doctor->email }}</a>
                     </section>
                     <button class="btn btn-primary view-result" data-bs-toggle="modal" data-bs-target="#consultationModal{{ $consultation->id }}">View result</button>
                   </footer>
