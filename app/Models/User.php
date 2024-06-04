@@ -59,4 +59,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(HealthData::class, 'users_id');
     }
+
+    public function patientResults()
+    {
+        return $this->hasMany(Result::class, 'patient_id');
+    }
+
+    public function doctorResults()
+    {
+        return $this->hasMany(Result::class, 'doctor_id');
+    }
 }

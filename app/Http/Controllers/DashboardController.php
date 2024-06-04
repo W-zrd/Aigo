@@ -7,6 +7,7 @@ use App\Http\Controllers\StravaController;
 use App\Http\Controllers\ConsultationController;
 use App\Models\PhysicalActivity;
 use App\Models\HealthData;
+use App\Models\Result;
 use App\Models\Notification;
 use App\Models\Consultation;
 use Carbon\Carbon;
@@ -27,6 +28,10 @@ class DashboardController extends Controller
             $activity->calories_burned = $activity->calculateCaloriesBurned();
             return $activity;
         });
+        
+        // Loop through activities and print out the values
+        
+        $totalDistance = $activities->sum('distance');
 
         if ($healthData) {
             // Check if obesity_status is null
@@ -46,7 +51,7 @@ class DashboardController extends Controller
             }
         }
     
-        return view('dashboardClient', compact('activities', 'healthData'));
+        return view('dashboardClient', compact('activities', 'healthData', 'totalDistance'));
     }
     
     private function predictObesity($healthData, $user)
@@ -174,8 +179,17 @@ class DashboardController extends Controller
         return view('health-data');
     }
 
-    public function result()
+
+    public function consultationResults()
     {
-        return view('result');
+        $patient = auth()->user();
+        $consultations = Consultation::where('patient_id', $patient->id)
+            ->where('consultation_status', 'finished')
+            ->with('doctor', 'result')
+            ->orderBy('consultation_date', 'desc')
+            ->get();
+        
+        return view('customer-result', compact('consultations'));
     }
+
 }

@@ -79,7 +79,7 @@
                            </div>
                            <div class="calories-info">
                              <p class="calories-label pt-2">Running Distance</p>
-                             <p class="calories-value">3000 meters</p>
+                             <p class="calories-value">{{ $totalDistance ?? 'N/A' }} meters</p>
                            </div>
                          </section>
 
@@ -89,7 +89,7 @@
                            </div>
                            <div class="calories-info">
                              <p class="calories-label pt-2">Sleep Time</p>
-                             <p class="calories-value">8 hours/day</p>
+                             <p class="calories-value">{{ $healthData->sleeptime ?? 'N/A' }} hours/day</p>
                            </div>
                          </section>
                      </div>

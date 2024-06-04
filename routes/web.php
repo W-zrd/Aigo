@@ -31,17 +31,13 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/customer-transaction', function () {
-    return view('customer-transaction');
+
+
+Route::get('/customer-result', function () {
+    return view('customer-result');
 });
 
-Route::get('/customer-profile', function () {
-    return view('customer-profile');
-});
 
-Route::get('/doctor-profile', function () {
-    return view('doctor-profile');
-});
 
 
 Route::post('/strava/authorize', [StravaController::class, 'authorize'])->name('strava.authorize');
@@ -54,9 +50,9 @@ Route::group(['prefix' => 'client', 'middleware' => ['auth', 'verified']], funct
     // DASHBOARD CONTROLLER
     Route::get('/dashboard', [DashboardController::class, 'dashboardClient'])->name('dashboard')->middleware('role');
     Route::get('/activity-report', [DashboardController::class, 'activityReport'])->name('activity-report');
-    Route::get('/result', [DashboardController::class, 'result'])->name('result');
     Route::get('/schedule', [DashboardController::class, 'schedule'])->name('customer.schedule');
     Route::get('/notifications', [DashboardController::class, 'notifications'])->name('client.notifications');
+    Route::get('/results', [DashboardController::class, 'consultationResults'])->name('patient.consultation-results');
 
     // CONSULTATION CONTROLLER
     Route::get('/health-data', [ConsultationController::class, 'showHealthDataForm'])->name('health-data.show');
@@ -91,10 +87,8 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
     Route::get('/patient-acceptance', [DoctorController::class, 'patientAcceptance'])->name('doctor.patient-acceptance');
     Route::get('/notifications', [DoctorController::class, 'notifications'])->name('doctor.notifications');
 
-    Route::get('/schedule', function () {
-        return view('doctor-schedule');
-    })->name('doctor.schedule');
-
+    Route::get('/schedule', function () {return view('doctor-schedule');})->name('doctor.schedule');
+    Route::get('/recomendation', function () {return view('doctor-recomendation');})->name('doctor.recomendation');
     Route::get('/transaction', function () {return view('doctor-transaction');})->name('doctor.transaction');
 
     Route::get('/profile', function () {return view('doctor-profile');})->name('doctor.profile');
@@ -103,6 +97,9 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
 
     Route::post('/approve-consultation/{consultationId}', [DoctorController::class, 'approveConsultation'])->name('doctor.approve-consultation');
     Route::get('/schedule', [DoctorController::class, 'schedule'])->name('doctor.schedule');
+
+    Route::get('/consultation-result/{patientId}', [DoctorController::class, 'showConsultationResultForm'])->name('doctor.show-consultation-result-form');
+    Route::post('/consultation-result', [DoctorController::class, 'storeConsultationResult'])->name('doctor.store-consultation-result');
 });
 
 
