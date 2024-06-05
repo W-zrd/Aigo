@@ -107,7 +107,7 @@
                             </div>
                             <div class="calories-info">
                                 @php
-                                    $maxDistance = 3000;
+                                    $maxDistance = $recommended_distance;
                                     
                                     // Calculate the percentage of completion
                                     $percentage = ($totalDistance / $maxDistance) * 100;

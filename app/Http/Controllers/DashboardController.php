@@ -147,10 +147,12 @@ class DashboardController extends Controller
         } else {
             $predictedCalories = 0;
         }
-    
+
+        $recommended_distance = Result::where('patient_id', $user->id)->get()->last()->jarak_lari;
         return view('activity-report',
         compact(
-            'totalSteps', 'totalDistance', 'durationValue', 'durationUnit', 'averageSleepTime', 'filteredHealthData', 'activities', 'predictedCalories'
+            'totalSteps', 'totalDistance', 'durationValue', 'durationUnit', 
+            'averageSleepTime', 'filteredHealthData', 'activities', 'predictedCalories', 'recommended_distance'
         ));
     }
     

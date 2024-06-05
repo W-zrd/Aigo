@@ -37,7 +37,7 @@ class ConsultationFactory extends Factory
             'consultation_date' => $this->faker->dateTimeBetween('-1 year', '+1 year')->format('Y-m-d'),
             'consultation_time' => $this->faker->time('H:i:s'),
             'location' => $this->faker->city,
-            'consultation_status' => $this->faker->randomElement(['pending', 'cancelled', 'approved', 'finished']),
+            'consultation_status' => $this->faker->randomElement(['pending', 'declined', 'approved', 'finished']),
         ];
     }
 }

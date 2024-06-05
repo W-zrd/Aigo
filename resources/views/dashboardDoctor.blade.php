@@ -28,18 +28,18 @@
                   <canvas id="patientChart"></canvas>
                 </div>
             <div class="patient-stats-row">
-                <div class="patient-stat" style="background-color:#8DB3FF">
-                <div class="patient-stat-value">250</div>
+              <div class="patient-stat" style="background-color:#8DB3FF">
+                <div class="patient-stat-value">{{ $normalWeightCount }}</div>
                 <div class="patient-stat-label">Normal</div>
-                </div>
-                <div class="patient-stat" style="background-color:#F45D78" >
-                <div class="patient-stat-value">150</div>
+            </div>
+            <div class="patient-stat" style="background-color:#F45D78" >
+                <div class="patient-stat-value">{{ $overweightCount }}</div>
                 <div class="patient-stat-label">Overweight</div>
-                </div>
-                <div class="patient-stat" style="background-color:#5DF4C7">
-                <div class="patient-stat-value">100</div>
+            </div>
+            <div class="patient-stat" style="background-color:#5DF4C7">
+                <div class="patient-stat-value">{{ $unknownCount }}</div>
                 <div class="patient-stat-label">Unknown</div>
-                </div>
+            </div>
             </div>
             </div>
         </div>
@@ -62,10 +62,10 @@
                         </div>
                     </div>
                     <div class="gender-stats-labels">
-                        <div class="gender-label">Male</div>
-                        <div class="gender-value">28</div>
-                        <div class="gender-label">Female</div>
-                        <div class="gender-value">19</div>
+                      <div class="gender-label">Male</div>
+                      <div class="gender-value">{{ $malePatients }}</div>
+                      <div class="gender-label">Female</div>
+                      <div class="gender-value">{{ $femalePatients }}</div>
                     </div>
                     </div>
                 </div>
@@ -80,11 +80,11 @@
                         </div>
                     </div>
                     <div class="gender-stats-labels">
-                        <div class="gender-label">Total appointment</div>
-                        <div class="gender-value">28</div>
-                        <div class="gender-label">Pending appointment</div>
-                        <div class="gender-value">19</div>
-                    </div>
+                      <div class="gender-label">Total appointment</div>
+                      <div class="gender-value">{{ $totalAppointments }}</div>
+                      <div class="gender-label">Pending appointment</div>
+                      <div class="gender-value">{{ $pendingAppointments }}</div>
+                  </div>
                     </div>
                 </div>
             </div>
@@ -93,45 +93,45 @@
         </div>
     </section>
     <section class="appointments-container">
-    <header class="appointments-header">
-        <h2 class="appointments-title">Appointments</h2>
-        <a href="#" class="view-more-link">
-        <span class="view-more-text">View More</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1101b12b8f7a35f0cd2181e27b04fddc83baf3cd8095916bb541c62ba1875e0e?apiKey=e644a539de5445e499b1d21950fa439b&" alt="" class="arrow-icon" />
-        </a>
-    </header>
-
-    <div class="appointments-table-header">
-        <div class="header-name">Name</div>
-        <div class="header-location">Location</div>
-        <div class="header-date">Date</div>
-        <div class="header-time">Time</div>
-        <div class="header-status">Status</div>
-    </div>
-
-    <div class="appointment-row">
+      <header class="appointments-header">
+          <h2 class="appointments-title">Appointments</h2>
+          <a href="#" class="view-more-link">
+              <span class="view-more-text">View More</span>
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1101b12b8f7a35f0cd2181e27b04fddc83baf3cd8095916bb541c62ba1875e0e?apiKey=e644a539de5445e499b1d21950fa439b&" alt="" class="arrow-icon" />
+          </a>
+      </header>
+  
+      <div class="appointments-table-header">
+          <div class="header-name">Name</div>
+          <div class="header-location">Location</div>
+          <div class="header-date">Date</div>
+          <div class="header-time">Time</div>
+          <div class="header-status">Status</div>
+      </div>
+  
+      @foreach ($latestAppointments as $appointment)
+      <div class="appointment-row">
         <div class="patient-info">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-        <div class="patient-name">Moris Johnson</div>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="{{ $appointment->patient->name }} avatar" class="patient-avatar" />
+            <div class="patient-name">{{ $appointment->patient->name }}</div>
         </div>
-        <div class="appointment-location">Online</div>
-        <div class="appointment-date">28 September 2024</div>
-        <div class="appointment-time">15:30 WIB</div>
-        <div class="appointment-status status-confirmed">Confirmed</div>
+        <div class="appointment-location">{{ $appointment->location }}</div>
+        <div class="appointment-date">{{ $appointment->consultation_date }}</div>
+        <div class="appointment-time">{{ $appointment->consultation_time }}</div>
+        <div class="appointment-status">
+            @if ($appointment->consultation_status === 'cancelled' || $appointment->consultation_status === 'declined')
+                <span class="text-danger">{{ ucfirst($appointment->consultation_status) }}</span>
+            @elseif ($appointment->consultation_status === 'pending')
+                <span class="text-warning">{{ ucfirst($appointment->consultation_status) }}</span>
+            @elseif ($appointment->consultation_status === 'approved')
+                <span>{{ ucfirst($appointment->consultation_status) }}</span>
+            @else
+                <span>{{ ucfirst($appointment->consultation_status) }}</span>
+            @endif
+        </div>
     </div>
-
-    <div class="appointment-row">
-    <div class="patient-info">
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a035700e6dde8893391104b4951e482b92fd90bf27ee7430998441c8f71bd031?apiKey=e644a539de5445e499b1d21950fa439b&" alt="Moris Johnson avatar" class="patient-avatar" />
-      <div class="patient-name">Moris Johnson</div>
-    </div>
-    <div class="appointment-location">RS. Medicare Sukapura</div>
-    <div class="appointment-date">28 September 2024</div>
-    <div class="appointment-time">15:30 WIB</div>
-    <div class="appointment-status status-cancelled">Cancelled</div>
-  </div>
-
-    </section>
+      @endforeach
+  </section>
     </main>
     </div>
   </div>
@@ -143,21 +143,21 @@
       const patientChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          datasets: [{
-            data: [250, 150, 100],
-            backgroundColor: [
-            'rgba(141, 179, 255, 0.2)',  
-            'rgba(244, 93, 120, 0.2)',
-            'rgba(93, 244, 199, 0.2)'
-          ],
-          borderColor: [
-            'rgba(141, 179, 255, 1)', 
-            'rgba(244, 93, 120, 1)',
-            'rgba(93, 244, 199, 1)'
-          ],
-            borderWidth: 1
+        datasets: [{
+              data: [{{ $normalWeightCount }}, {{ $overweightCount }}, {{ $unknownCount }}],
+              backgroundColor: [
+                  'rgba(141, 179, 255, 0.2)',
+                  'rgba(244, 93, 120, 0.2)',
+                  'rgba(93, 244, 199, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(141, 179, 255, 1)',
+                  'rgba(244, 93, 120, 1)',
+                  'rgba(93, 244, 199, 1)'
+              ],
+              borderWidth: 1
           }]
-        },
+      },
         options: {
           responsive: true,
           plugins: {
