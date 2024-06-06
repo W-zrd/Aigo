@@ -57,15 +57,6 @@
           </a>
         </div>
 
-        {{-- SUB-MENU 3: Transaction --}}
-        <div class="btn-group submenu ms-4 ps-2">
-          <span class="material-symbols-outlined"> payment </span>
-          <a href="{{ route('doctor.transaction') }}"
-            onmouseover="this.style.color='#6FFFE9'" 
-            onmouseout="this.style.color='#8296C5'">Transaction
-          </a>
-        </div>
-
         {{-- MENU 2: SETTINGS --}}
         <div class="menu">
           <aside></aside>
