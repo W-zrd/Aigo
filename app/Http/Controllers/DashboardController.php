@@ -148,7 +148,7 @@ class DashboardController extends Controller
             $predictedCalories = 0;
         }
 
-        $recommended_distance = Result::where('patient_id', $user->id)->get()->last()->jarak_lari;
+        $recommended_distance = Result::where('patient_id', $user->id)->get()->last()->jarak_lari ?? 0;
         return view('activity-report',
         compact(
             'totalSteps', 'totalDistance', 'durationValue', 'durationUnit', 

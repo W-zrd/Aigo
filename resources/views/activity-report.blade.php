@@ -108,23 +108,21 @@
                             <div class="calories-info">
                                 @php
                                     $maxDistance = $recommended_distance;
-                                    
-                                    // Calculate the percentage of completion
-                                    $percentage = ($totalDistance / $maxDistance) * 100;
-
-                                    // Limit the percentage within 100%
-                                    $percentage = min($percentage, 100);
+                                    $percentage = 0;
+                                    if ($maxDistance != 0) {
+                                        $percentage = ($totalDistance / $maxDistance) * 100;
+                                        $percentage = min($percentage, 100); // Ensure the percentage doesn't exceed 100
+                                    }
                                 @endphp
-                              <div class="calories-header">
-                                <p class="calories-label">Running Distance (m)</p>
-                                <p class="calories-value">
-                                    {{ $totalDistance }} <span class="calories-total">/{{$maxDistance}}</span>
-                                </p>
-                              </div>
-                              <div class="progress calories-progress" role="progressbar" aria-label="Distance progress" aria-valuenow="{{ $totalDistance }}" aria-valuemin="0" aria-valuemax="{{ $maxDistance }}">
-                                <div class="progress-bar calories-progress-bar" style="width: {{ $percentage }}%"></div>
-                              </div>
-                              
+                                <div class="calories-header">
+                                    <p class="calories-label">Running Distance (m)</p>
+                                    <p class="calories-value">
+                                        {{ $totalDistance }} <span class="calories-total">/{{ $maxDistance }}</span>
+                                    </p>
+                                </div>
+                                <div class="progress calories-progress" role="progressbar" aria-label="Distance progress" aria-valuenow="{{ $totalDistance }}" aria-valuemin="0" aria-valuemax="{{ $maxDistance }}">
+                                    <div class="progress-bar calories-progress-bar" style="width: {{ $percentage }}%"></div>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -228,7 +226,7 @@
             },
             options: {
                 scales: {
-                    y: { // defining min and max so hiding the dataset does not change scale range
+                    y: { 
                         min: 50,
                         max: 400
                     }
