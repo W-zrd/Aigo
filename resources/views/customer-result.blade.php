@@ -63,6 +63,10 @@
                         <label class="form-label">Jenis Makanan yang Direkomendasikan:</label>
                         <p>{{ $consultation->result->food }}</p>
                       </div>
+                      <div class="mb-3">
+                        <label class="form-label">Catatan tambahan:</label>
+                        <p>{{ $consultation->result->notes }}</p>
+                      </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
