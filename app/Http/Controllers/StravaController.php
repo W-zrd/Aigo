@@ -97,7 +97,7 @@ class StravaController extends Controller
     
                     PhysicalActivity::create([
                         'users_id' => auth()->user()->id,
-                        'id' => $activity['id'],
+                        //'id' => $activity['id'],
                         'date' => $formattedDate,
                         'type' => $activity['type'],
                         'distance' => $activity['distance'],
