@@ -28,7 +28,7 @@
                 <h3 class="mb-3">Summary</h3>
                 <div class="col">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper">
+                        <div class="summary-icon-wrapper" data-toggle="tooltip" data-placement="top" title="Langkah yang telah anda tempuh">
                             <img src="{{ asset('/asset/svg/SPM.svg') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Steps</div>
                         </div>
@@ -41,7 +41,7 @@
                 
                 <div class="col mb-3">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper" style="background-color: #66F4DF;">
+                        <div class="summary-icon-wrapper" style="background-color: #66F4DF; " data-toggle="tooltip" data-placement="top" title="Total jarak lari yang telah ditempuh">
                             <img src="{{ asset('/asset/png/distance.png') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Distance</div>
                         </div>
@@ -54,7 +54,7 @@
 
                 <div class="col mb-3">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper" style="background-color: #7EB2FF;">
+                        <div class="summary-icon-wrapper" style="background-color: #7EB2FF;" data-toggle="tooltip" data-placement="top" title="Total waktu aktivitas lari">
                             <img src="{{ asset('/asset/png/duration.png') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Duration</div>
                         </div>
@@ -67,7 +67,7 @@
 
                 <div class="col mb-3">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper" style="background-color: #C094F7;">
+                        <div class="summary-icon-wrapper" style="background-color: #C094F7;" data-toggle="tooltip" data-placement="top" title="Total waktu tidur">
                             <img src="{{ asset('/asset/png/moon.png') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Avg. Sleep</div>
                         </div>
@@ -84,7 +84,7 @@
                     <div class="col-4">
                         <h5>Recommendation</h5>
                         <section class="calories-container mt-4 mb-3">
-                            <div class="avatar-container">
+                            <div class="avatar-container" data-toggle="tooltip" data-placement="top" title="Kalori yang harus di bakar">
                                 <img src="{{ asset('/asset/png/fire.png') }}" alt="Calories icon" class="calories-icon" />
                             </div>
                             <div class="calories-info">
@@ -102,7 +102,7 @@
                         </section>
 
                         <section class="calories-container mt-4 mb-3">
-                            <div class="avatar-container">
+                            <div class="avatar-container" data-toggle="tooltip" data-placement="top" title="Jarak lari yang harus di tempuh">
                                 <img src="{{ asset('/asset/svg/foot.svg') }}" alt="Calories icon" class="calories-icon" />
                             </div>
                             <div class="calories-info">

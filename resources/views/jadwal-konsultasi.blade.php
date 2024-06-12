@@ -81,7 +81,7 @@
                      <div class="col">
                          <div class="mb-3">
                              <label for="doctor_id" class="form-label">Pilih Dokter</label>
-                             <select class="form-select" name="doctor_id" id="doctor_id" aria-label="doctor_id" style="border-radius: 20px">
+                             <select class="form-select" name="doctor_id" id="doctor_id" aria-label="doctor_id" style="border-radius: 20px" required>
                                  @foreach ($doctors as $doctor)
                                      <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                                  @endforeach
@@ -96,8 +96,8 @@
                      <div class="col">
                          <div class="mb-3">
                              <label for="consultation_date" class="form-label">Tanggal Konsultasi</label>
-                             <div class="input-group date" id="consultationDatePicker" data-target-input="nearest">
-                                 <input type="text" class="form-control datetimepicker-input" id="consultation_date" name="consultation_date" style="border-radius: 20px" data-target="#consultationDatePicker" placeholder="Pilih Tanggal Konsultasi" value="{{ old('consultation_date') }}"/>
+                             <div class="input-group date" id="consultationDatePicker" data-target-input="nearest" >
+                                 <input type="text" class="form-control datetimepicker-input" id="consultation_date" name="consultation_date" style="border-radius: 20px" data-target="#consultationDatePicker" placeholder="Pilih Tanggal Konsultasi" value="{{ old('consultation_date') }}" required/>
                                  <div class="input-group-append" data-target="#consultationDatePicker" data-toggle="datetimepicker">
                                  </div>
                              </div>
@@ -112,7 +112,7 @@
                      <div class="col">
                          <div class="mb-3">
                              <label for="consultation_time" class="form-label">Jam Konsultasi</label>
-                             <input value="{{ old('consultation_time') }}" type="time" class="form-control" id="consultation_time" name="consultation_time" aria-describedby="consultationTimeHelp" style="border-radius: 20px" placeholder="Pilih jam konsultasi dengan dokter">
+                             <input value="{{ old('consultation_time') }}" type="time" class="form-control" id="consultation_time" name="consultation_time" aria-describedby="consultationTimeHelp" style="border-radius: 20px" placeholder="Pilih jam konsultasi dengan dokter" required>
                          </div>
                      </div>
 
@@ -120,7 +120,7 @@
                      <div class="col">
                          <div class="mb-3">
                              <label for="location" class="form-label">Lokasi Konsultasi</label>
-                             <input value="{{ old('location') }}" type="text" class="form-control" name="location" id="location" aria-describedby="locationHelp" style="border-radius: 20px" placeholder="Masukkan lokasi konsultasi">
+                             <input value="{{ old('location') }}" type="text" class="form-control" name="location" id="location" aria-describedby="locationHelp" style="border-radius: 20px" placeholder="Masukkan lokasi konsultasi" required>
                          </div>
                      </div>
                  </div>

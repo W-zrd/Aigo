@@ -38,7 +38,7 @@
                              <div class="stat-item">
                                <span class="stat-label">Weight</span>
                                <div class="stat-value">
-                                 <span class="stat-number">{{$healthData->weight ?? 'N/A'}}</span>
+                                 <span class="stat-number">{{$healthData->weight ?? '0'}}</span>
                                  <span class="stat-unit">kg</span>
                                </div>
                              </div>
@@ -46,14 +46,14 @@
                              <div class="stat-item">
                                <span class="stat-label">Height</span>
                                <div class="stat-value">
-                                 <span class="stat-number">{{$healthData->height ?? 'N/A'}}</span>
+                                 <span class="stat-number">{{$healthData->height ?? '0'}}</span>
                                  <span class="stat-unit">cm</span>
                                </div>
                              </div>
                              
                              <div class="obesity-status">
                                <span class="obesity-label">Obesity Status</span>
-                               <span class="obesity-value">{{ $healthData->obesity_status ?? "N/A"}}</span>
+                               <span class="obesity-value">{{ $healthData->obesity_status ?? "0"}}</span>
                              </div>
                            </div>
                          </section>
@@ -64,32 +64,34 @@
                      <div class="col">
                         <h2 class="customer-name fs-5 ">Recommendations</h2>
                         <section class="calories-container mt-3">
-                           <div class="icon-wrapper" id="calories">
+                           <div class="icon-wrapper" id="calories" data-toggle="tooltip" data-placement="top" title="Kalori yang harus dibakar">
                              <img src="{{asset('/asset/svg/flame.svg')}}" alt="Calories icon" class="calories-icon" />
                            </div>
                            <div class="calories-info">
-                             <p class="calories-label pt-2">Calories</p>
-                             <p class="calories-value">{{ $healthData->calorie_recommendation ?? 'N/A' }} cal</p>
+                             <p class="calories-label pt-2">Calories
+                             </p>
+                             <p class="calories-value">{{ $healthData->calorie_recommendation ?? '0' }} cal</p>
+                             
                            </div>
                          </section>
 
                          <section class="calories-container mt-2">
-                           <div class="icon-wrapper" id="distance">
+                           <div class="icon-wrapper" id="distance" data-toggle="tooltip" data-placement="top" title="Jarak lari yang harus ditempuh">
                              <img src="{{asset('/asset/svg/shoes.svg')}}" alt="Calories icon" class="calories-icon" />
                            </div>
                            <div class="calories-info">
                              <p class="calories-label pt-2">Running Distance</p>
-                             <p class="calories-value">{{ $totalDistance ?? 'N/A' }} meters</p>
+                             <p class="calories-value">{{ $totalDistance ?? '0' }} meters</p>
                            </div>
                          </section>
 
                          <section class="calories-container mt-2">
-                           <div class="icon-wrapper" id="sleep">
+                           <div class="icon-wrapper" id="sleep" data-toggle="tooltip" data-placement="top" title="Waktu tidur yang disarankan">
                              <img src="{{asset('/asset/svg/moon.svg')}}" alt="Calories icon" class="calories-icon" />
                            </div>
                            <div class="calories-info">
                              <p class="calories-label pt-2">Sleep Time</p>
-                             <p class="calories-value">{{ $healthData->sleeptime ?? 'N/A' }} hours/day</p>
+                             <p class="calories-value">{{ $healthData->sleeptime ?? '0' }} hours/day</p>
                            </div>
                          </section>
                      </div>
@@ -178,6 +180,11 @@
                   
          </div>
       </div>
+      <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      </script>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
       {{-- <script>
