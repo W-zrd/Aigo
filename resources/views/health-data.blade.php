@@ -72,12 +72,12 @@
                </div>
             </div>
             <div class="event-form p-5 me-5 ms-5 mt-4">
-               <form action="{{route('health-data.store')}}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  {{-- ROW 1 --}}
-                  <div class="row">
-                     {{-- Tanggal Lahir --}}
-                     <div class="col">
+            <form action="{{ route('health-data.store') }}" method="POST" enctype="multipart/form-data">
+               @csrf
+               {{-- ROW 1 --}}
+               <div class="row">
+                  {{-- Tanggal Lahir --}}
+                  <div class="col">
                         <div class="mb-3">
                            <label for="birthdate" class="form-label">Tanggal Lahir</label>
                            <div class="input-group date @error('birthdate') is-invalid @enderror" id="birthdatePicker" data-target-input="nearest">
@@ -112,9 +112,9 @@
                                <div class="invalid-feedback">{{ $message }}</div>
                            @enderror
                         </div>
-                     </div>
-                     {{-- Waktu Tidur--}}
-                     <div class="col">
+                  </div>
+                  {{-- Waktu Tidur --}}
+                  <div class="col">
                         <div class="mb-3">
                            <label for="sleeptime" class="form-label">Waktu Tidur per hari (jam)</label>
                            <input value="{{old('sleeptime', $healthData->sleeptime ?? '')}}" type="text" class="form-control @error('sleeptime') is-invalid @enderror" name="sleeptime" id="sleeptime" aria-describedby="sleeptimeHelp" style="border-radius: 20px" placeholder="8">
@@ -122,12 +122,12 @@
                                <div class="invalid-feedback">{{ $message }}</div>
                            @enderror
                         </div>
-                     </div>
                   </div>
-                  {{-- ROW 3 --}}
-                  <div class="row">
-                     {{-- Riwayat Alergi Makanan --}}
-                     <div class="col">
+               </div>
+               {{-- ROW 3 --}}
+               <div class="row">
+                  {{-- Riwayat Alergi Makanan --}}
+                  <div class="col">
                         <div class="mb-3">
                            <label for="disease" class="form-label">Riwayat Alergi Makanan</label>
                            <input value="{{old('disease', $healthData->alergi_makanan ?? '')}}" type="text" class="form-control @error('alergi_makanan') is-invalid @enderror" id="alergi_makanan" name="alergi_makanan" aria-describedby="alergi_makananHelp" style="border-radius: 20px" placeholder="Flu">
@@ -135,9 +135,9 @@
                                <div class="invalid-feedback">{{ $message }}</div>
                            @enderror
                         </div>
-                     </div>
-                     {{-- Kebiasaan Makan --}}
-                     <div class="col">
+                  </div>
+                  {{-- Kebiasaan Makan --}}
+                  <div class="col">
                         <div class="mb-3">
                            <label for="food" class="form-label">Kebiasaan Makan</label>
                            <input value="{{old('food', $healthData->food ?? '')}}" type="text" class="form-control @error('food') is-invalid @enderror" name="food" id="food" aria-describedby="foodHelp" style="border-radius: 20px" placeholder="Makanan yang sering dimakan dalam 1 bulan terakhir">
@@ -145,13 +145,12 @@
                                <div class="invalid-feedback">{{ $message }}</div>
                            @enderror
                         </div>
-                     </div>
                   </div>
-
-                  {{-- ROW 4 --}}
-                  <div class="row">
-                     {{-- Riwayat Penyakit --}}
-                     <div class="col">
+               </div>
+               {{-- ROW 4 --}}
+               <div class="row">
+                  {{-- Riwayat Penyakit --}}
+                  <div class="col">
                         <div class="mb-3">
                            <label for="disease" class="form-label">Riwayat Penyakit</label>
                            <input value="{{old('disease', $healthData->disease ?? '')}}" type="text" class="form-control @error('disease') is-invalid @enderror" id="disease" name="disease" aria-describedby="diseaseHelp" style="border-radius: 20px" placeholder="Flu">
@@ -159,14 +158,15 @@
                                <div class="invalid-feedback">{{ $message }}</div>
                            @enderror
                         </div>
-                     </div>
                   </div>
-                  <div class="row justify-content-end mt-5">
-                     <div class="col-auto">
+               </div>
+               <div class="row justify-content-end mt-5">
+                  <div class="col-auto">
                         <button class="btn btn-primary" type="submit">Next</button>
-                     </div>
                   </div>
-               </form>
+               </div>
+            </form>
+
             </div>
          </div>
       </div>
