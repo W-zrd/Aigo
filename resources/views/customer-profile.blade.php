@@ -84,19 +84,11 @@
                               </div>
                             </div>
                           </div>
-                          <div class="row">
-                            <div class="col mb-3">
-                              <div class="form-group">
-                                <label>About</label>
-                                <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-12 col-sm-6 mb-3">
-                          <div class="mb-2"><b>Change Password</b></div>
+                          <div class="mb-2 mt-4"><b>Change Password</b></div>
                           <div class="row">
                             <div class="col">
                               <div class="form-group">

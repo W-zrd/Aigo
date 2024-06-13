@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="{{ asset('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Doctor Dashboard</title>
+    <title>Berikan Rekomendasi Pasien</title>
   </head>
   <body>
   @include('doctor-sidebar')
@@ -41,12 +41,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="food" class="form-label">Food</label>
+                            <label for="food" class="form-label">Jenis Makanan yang Direkomendasikan</label>
                             <input type="text" class="form-control" id="food" name="food" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="unrecommended_food" class="form-label">Unrecommended Food</label>
+                            <label for="unrecommended_food" class="form-label">Jenis Makanan yang Perlu Dikurangi</label>
                             <input type="text" class="form-control" id="unrecommended_food" name="unrecommended_food" required>
                         </div>
 

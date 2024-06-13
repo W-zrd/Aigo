@@ -28,7 +28,7 @@
                 <h3 class="mb-3">Summary</h3>
                 <div class="col">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper">
+                        <div class="summary-icon-wrapper" data-toggle="tooltip" data-placement="top" title="Langkah yang telah anda tempuh">
                             <img src="{{ asset('/asset/svg/SPM.svg') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Steps</div>
                         </div>
@@ -41,7 +41,7 @@
                 
                 <div class="col mb-3">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper" style="background-color: #66F4DF;">
+                        <div class="summary-icon-wrapper" style="background-color: #66F4DF; " data-toggle="tooltip" data-placement="top" title="Total jarak lari yang telah ditempuh">
                             <img src="{{ asset('/asset/png/distance.png') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Distance</div>
                         </div>
@@ -54,7 +54,7 @@
 
                 <div class="col mb-3">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper" style="background-color: #7EB2FF;">
+                        <div class="summary-icon-wrapper" style="background-color: #7EB2FF;" data-toggle="tooltip" data-placement="top" title="Total waktu aktivitas lari">
                             <img src="{{ asset('/asset/png/duration.png') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Duration</div>
                         </div>
@@ -67,7 +67,7 @@
 
                 <div class="col mb-3">
                     <div class="activity-container">
-                        <div class="summary-icon-wrapper" style="background-color: #C094F7;">
+                        <div class="summary-icon-wrapper" style="background-color: #C094F7;" data-toggle="tooltip" data-placement="top" title="Total waktu tidur">
                             <img src="{{ asset('/asset/png/moon.png') }}" alt="Steps icon" class="summary-icon" />
                             <div class="summary-text">Avg. Sleep</div>
                         </div>
@@ -84,47 +84,45 @@
                     <div class="col-4">
                         <h5>Recommendation</h5>
                         <section class="calories-container mt-4 mb-3">
-                            <div class="avatar-container">
+                            <div class="avatar-container" data-toggle="tooltip" data-placement="top" title="Kalori yang harus di bakar">
                                 <img src="{{ asset('/asset/png/fire.png') }}" alt="Calories icon" class="calories-icon" />
                             </div>
                             <div class="calories-info">
                               <div class="calories-header">
                                 <p class="calories-label">Calories (cal)</p>
                                 <p class="calories-value">
-                                  1020 <span class="calories-total"> / {{ $predictedCalories }}</span>
+                                  0 <span class="calories-total"> / {{ $predictedCalories }}</span>
                                 </p>
                               </div>
-                              <div class="progress calories-progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar calories-progress-bar" style="width: 50%"></div>
+                              <div class="progress calories-progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar calories-progress-bar" style="width: 10%"></div>
                               </div>
                               
                             </div>
                         </section>
 
                         <section class="calories-container mt-4 mb-3">
-                            <div class="avatar-container">
+                            <div class="avatar-container" data-toggle="tooltip" data-placement="top" title="Jarak lari yang harus di tempuh">
                                 <img src="{{ asset('/asset/svg/foot.svg') }}" alt="Calories icon" class="calories-icon" />
                             </div>
                             <div class="calories-info">
                                 @php
-                                    $maxDistance = 3000;
-                                    
-                                    // Calculate the percentage of completion
-                                    $percentage = ($totalDistance / $maxDistance) * 100;
-
-                                    // Limit the percentage within 100%
-                                    $percentage = min($percentage, 100);
+                                    $maxDistance = $recommended_distance;
+                                    $percentage = 0;
+                                    if ($maxDistance != 0) {
+                                        $percentage = ($totalDistance / $maxDistance) * 100;
+                                        $percentage = min($percentage, 100); // Ensure the percentage doesn't exceed 100
+                                    }
                                 @endphp
-                              <div class="calories-header">
-                                <p class="calories-label">Running Distance (m)</p>
-                                <p class="calories-value">
-                                    {{ $totalDistance }} <span class="calories-total">/{{$maxDistance}}</span>
-                                </p>
-                              </div>
-                              <div class="progress calories-progress" role="progressbar" aria-label="Distance progress" aria-valuenow="{{ $totalDistance }}" aria-valuemin="0" aria-valuemax="{{ $maxDistance }}">
-                                <div class="progress-bar calories-progress-bar" style="width: {{ $percentage }}%"></div>
-                              </div>
-                              
+                                <div class="calories-header">
+                                    <p class="calories-label">Running Distance (m)</p>
+                                    <p class="calories-value">
+                                        {{ $totalDistance }} <span class="calories-total">/{{ $maxDistance }}</span>
+                                    </p>
+                                </div>
+                                <div class="progress calories-progress" role="progressbar" aria-label="Distance progress" aria-valuenow="{{ $totalDistance }}" aria-valuemin="0" aria-valuemax="{{ $maxDistance }}">
+                                    <div class="progress-bar calories-progress-bar" style="width: {{ $percentage }}%"></div>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -211,7 +209,7 @@
         $('#example').DataTable();
       </script>
 
-      <script>
+      {{-- <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -228,13 +226,46 @@
             },
             options: {
                 scales: {
-                    y: { // defining min and max so hiding the dataset does not change scale range
+                    y: { 
                         min: 50,
                         max: 400
                     }
                 }
             }
         });
-     </script>
+     </script> --}}
+
+     <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($labels) !!},
+                datasets: [{
+                    label: 'Distance (meter)',
+                    data: {!! json_encode($distances) !!},
+                    borderColor: 'rgba(55, 82, 183, 1)',
+                    backgroundColor: 'rgba(63, 82, 109, 0.1)',
+                    borderWidth: 1,
+                    tension: 0.1
+                }, {
+                    label: 'Duration (sec)',
+                    data: {!! json_encode($durations) !!},
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                    borderWidth: 1,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        min: 0,
+                        max: Math.max({{ $distances->max() ?? 0 }}, {{ $durations->max() ?? 0 }})
+                    }
+                }
+            }
+        });
+    </script>
    </body>
 </html>

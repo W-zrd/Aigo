@@ -10,8 +10,8 @@ class PhysicalActivity extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'users_id',
+        //'id',
         'date',
         'type',
         'distance',

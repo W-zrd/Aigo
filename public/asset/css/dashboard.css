@@ -303,6 +303,13 @@ body {
     margin-left: 100px;
 }
 
+.calories-description {
+    display: block;
+    font-size: 0.8em; 
+    color: #666;
+    margin-top: 5px;
+}
+
 body{
     margin-top:20px;
     background:#f8f8f8

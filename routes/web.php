@@ -88,7 +88,6 @@ Route::group(['prefix' => 'doctor', 'middleware' => ['auth', 'verified']], funct
     Route::get('/notifications', [DoctorController::class, 'notifications'])->name('doctor.notifications');
 
     Route::get('/schedule', function () {return view('doctor-schedule');})->name('doctor.schedule');
-    Route::get('/recomendation', function () {return view('doctor-recomendation');})->name('doctor.recomendation');
     Route::get('/transaction', function () {return view('doctor-transaction');})->name('doctor.transaction');
 
     Route::get('/profile', function () {return view('doctor-profile');})->name('doctor.profile');
@@ -113,7 +112,5 @@ Route::middleware('auth')->get('/api/current-user-id', function () {
     return response()->json(['user_id' => Auth::id()]);
 });
 
-Route::get('/user/{id}', [UserAPIController::class, 'getUser']);
-Route::get('/health-data/{userId}', [HealthDataAPIController::class, 'getHealthData']);
 
 require __DIR__.'/auth.php';

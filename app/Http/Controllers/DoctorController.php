@@ -5,12 +5,48 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Consultation;
 use App\Models\Result;
+use App\Models\User;
+use App\Models\HealthData;
 use App\Models\Notification;
 
 class DoctorController extends Controller
 {
-    public function dashboard(){
-        return view('dashboardDoctor');
+    public function dashboard()
+    {
+        $normalWeightCount = HealthData::where('obesity_status', 'Normal weight')->count();
+        $overweightCount = HealthData::where('obesity_status', 'Overweight')->count();
+        $unknownCount = HealthData::whereNotIn('obesity_status', ['Normal weight', 'Overweight'])->count();
+    
+        $doctor = auth()->user();
+    
+        $totalAppointments = Consultation::where('doctor_id', $doctor->id)->count();
+        $pendingAppointments = Consultation::where('doctor_id', $doctor->id)
+            ->where('consultation_status', 'pending')
+            ->count();
+    
+        $malePatients = User::where('user_role', 'user')
+            ->where('gender', 'male')
+            ->count();
+        $femalePatients = User::where('user_role', 'user')
+            ->where('gender', 'female')
+            ->count();
+    
+        
+        $latestAppointments = Consultation::where('doctor_id', $doctor->id)
+        ->orderBy('consultation_date', 'desc')
+        ->take(5)
+        ->get();
+
+        return view('dashboardDoctor', compact(
+            'normalWeightCount',
+            'overweightCount',
+            'unknownCount',
+            'totalAppointments',
+            'pendingAppointments',
+            'malePatients',
+            'femalePatients',
+            'latestAppointments'
+        ));
     }
 
     public function notifications()
