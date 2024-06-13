@@ -80,19 +80,25 @@
                      <div class="col">
                         <div class="mb-3">
                            <label for="birthdate" class="form-label">Tanggal Lahir</label>
-                           <div class="input-group date" id="birthdatePicker" data-target-input="nearest">
-                               <input type="text" class="form-control datetimepicker-input" id="birthdate" name="birthdate" style="border-radius: 20px" data-target="#birthdatePicker" placeholder="Pilih Tanggal Lahir" value="{{ old('birthdate', $healthData->birthdate ?? '') }}"/>
+                           <div class="input-group date @error('birthdate') is-invalid @enderror" id="birthdatePicker" data-target-input="nearest">
+                               <input type="text" class="form-control datetimepicker-input " id="birthdate" name="birthdate" style="border-radius: 20px" data-target="#birthdatePicker" placeholder="Pilih Tanggal Lahir" value="{{ old('birthdate', $healthData->birthdate ?? '') }}"/>
                                <div class="input-group-append" data-target="#birthdatePicker" data-toggle="datetimepicker">
                                </div>
                            </div>
+                           @error('birthdate')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
                        </div>
                      </div>
                      {{-- Berat Badan --}}
                      <div class="col">
                         <div class="mb-3">
                            <label for="weight" class="form-label">Berat Badan (kg)</label>
-                           <input value="{{old('weight', $healthData->weight ?? '')}}" type="text" class="form-control" name="weight" id="weight" aria-describedby="weightHelp" style="border-radius: 20px" placeholder="60">
-                        </div>
+                           <input value="{{old('weight', $healthData->weight ?? '')}}" type="text" class="form-control @error('weight') is-invalid @enderror" name="weight" id="weight" aria-describedby="weightHelp" style="border-radius: 20px" placeholder="60" required>
+                           @error('weight')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
+                       </div>
                      </div>
                   </div>
                   {{-- ROW 2 --}}
@@ -101,14 +107,20 @@
                      <div class="col">
                         <div class="mb-3">
                            <label for="height" class="form-label">Tinggi Badan (cm)</label>
-                           <input value="{{old('height', $healthData->height ?? '')}}" type="text" class="form-control" id="height" name="height" aria-describedby="heightHelp" style="border-radius: 20px" placeholder="170">
+                           <input value="{{old('height', $healthData->height ?? '')}}" type="text" class="form-control @error('height') is-invalid @enderror" id="height" name="height" aria-describedby="heightHelp" style="border-radius: 20px" placeholder="170">
+                           @error('height')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
                         </div>
                      </div>
                      {{-- Waktu Tidur--}}
                      <div class="col">
                         <div class="mb-3">
                            <label for="sleeptime" class="form-label">Waktu Tidur per hari (jam)</label>
-                           <input value="{{old('sleeptime', $healthData->sleeptime ?? '')}}" type="text" class="form-control" name="sleeptime" id="sleeptime" aria-describedby="sleeptimeHelp" style="border-radius: 20px" placeholder="8">
+                           <input value="{{old('sleeptime', $healthData->sleeptime ?? '')}}" type="text" class="form-control @error('sleeptime') is-invalid @enderror" name="sleeptime" id="sleeptime" aria-describedby="sleeptimeHelp" style="border-radius: 20px" placeholder="8">
+                           @error('sleeptime')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
                         </div>
                      </div>
                   </div>
@@ -118,14 +130,20 @@
                      <div class="col">
                         <div class="mb-3">
                            <label for="disease" class="form-label">Riwayat Alergi Makanan</label>
-                           <input value="{{old('disease', $healthData->alergi_makanan ?? '')}}" type="text" class="form-control" id="alergi_makanan" name="alergi_makanan" aria-describedby="alergi_makananHelp" style="border-radius: 20px" placeholder="Flu">
+                           <input value="{{old('disease', $healthData->alergi_makanan ?? '')}}" type="text" class="form-control @error('alergi_makanan') is-invalid @enderror" id="alergi_makanan" name="alergi_makanan" aria-describedby="alergi_makananHelp" style="border-radius: 20px" placeholder="Flu">
+                           @error('alergi_makanan')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
                         </div>
                      </div>
                      {{-- Kebiasaan Makan --}}
                      <div class="col">
                         <div class="mb-3">
                            <label for="food" class="form-label">Kebiasaan Makan</label>
-                           <input value="{{old('food', $healthData->food ?? '')}}" type="text" class="form-control" name="food" id="food" aria-describedby="foodHelp" style="border-radius: 20px" placeholder="Makanan yang sering dimakan dalam 1 bulan terakhir">
+                           <input value="{{old('food', $healthData->food ?? '')}}" type="text" class="form-control @error('food') is-invalid @enderror" name="food" id="food" aria-describedby="foodHelp" style="border-radius: 20px" placeholder="Makanan yang sering dimakan dalam 1 bulan terakhir">
+                           @error('food')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
                         </div>
                      </div>
                   </div>
@@ -136,7 +154,10 @@
                      <div class="col">
                         <div class="mb-3">
                            <label for="disease" class="form-label">Riwayat Penyakit</label>
-                           <input value="{{old('disease', $healthData->disease ?? '')}}" type="text" class="form-control" id="disease" name="disease" aria-describedby="diseaseHelp" style="border-radius: 20px" placeholder="Flu">
+                           <input value="{{old('disease', $healthData->disease ?? '')}}" type="text" class="form-control @error('disease') is-invalid @enderror" id="disease" name="disease" aria-describedby="diseaseHelp" style="border-radius: 20px" placeholder="Flu">
+                           @error('disease')
+                               <div class="invalid-feedback">{{ $message }}</div>
+                           @enderror
                         </div>
                      </div>
                   </div>

@@ -91,11 +91,11 @@
                               <div class="calories-header">
                                 <p class="calories-label">Calories (cal)</p>
                                 <p class="calories-value">
-                                  1020 <span class="calories-total"> / {{ $predictedCalories }}</span>
+                                  0 <span class="calories-total"> / {{ $predictedCalories }}</span>
                                 </p>
                               </div>
-                              <div class="progress calories-progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar calories-progress-bar" style="width: 50%"></div>
+                              <div class="progress calories-progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar calories-progress-bar" style="width: 10%"></div>
                               </div>
                               
                             </div>
@@ -209,7 +209,7 @@
         $('#example').DataTable();
       </script>
 
-      <script>
+      {{-- <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -233,6 +233,39 @@
                 }
             }
         });
-     </script>
+     </script> --}}
+
+     <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($labels) !!},
+                datasets: [{
+                    label: 'Distance (meter)',
+                    data: {!! json_encode($distances) !!},
+                    borderColor: 'rgba(55, 82, 183, 1)',
+                    backgroundColor: 'rgba(63, 82, 109, 0.1)',
+                    borderWidth: 1,
+                    tension: 0.1
+                }, {
+                    label: 'Duration (sec)',
+                    data: {!! json_encode($durations) !!},
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                    borderWidth: 1,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        min: 0,
+                        max: Math.max({{ $distances->max() ?? 0 }}, {{ $durations->max() ?? 0 }})
+                    }
+                }
+            }
+        });
+    </script>
    </body>
 </html>

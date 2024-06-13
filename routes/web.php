@@ -112,7 +112,5 @@ Route::middleware('auth')->get('/api/current-user-id', function () {
     return response()->json(['user_id' => Auth::id()]);
 });
 
-Route::get('/user/{id}', [UserAPIController::class, 'getUser']);
-Route::get('/health-data/{userId}', [HealthDataAPIController::class, 'getHealthData']);
 
 require __DIR__.'/auth.php';

@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'doctor',
         ]);
 
+        User::factory()->count(1)->create([
+            'user_role' => 'admin',
+        ]);
+
         $this->call([
             ConsultationSeeder::class,
         ]);

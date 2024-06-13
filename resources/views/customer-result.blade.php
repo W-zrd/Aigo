@@ -49,23 +49,23 @@
                     <div class="modal-body">
                       <div class="mb-3">
                         <label class="form-label">Jarak Lari:</label>
-                        <p>{{ $consultation->result->jarak_lari }} meter</p>
+                        <p>{{ $consultation->result->jarak_lari ?? 0 }} meter</p>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Waktu Tidur:</label>
-                        <p>{{ $consultation->result->sleeptime }} jam/hari</p>
+                        <p>{{ $consultation->result->sleeptime ?? 0 }} jam/hari</p>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Jenis Makanan yang Dikurangi:</label>
-                        <p>{{ $consultation->result->unrecommended_food }}</p>
+                        <p>{{ $consultation->result->unrecommended_food ?? "-" }}</p>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Jenis Makanan yang Direkomendasikan:</label>
-                        <p>{{ $consultation->result->food }}</p>
+                        <p>{{ $consultation->result->food ?? "-" }}</p>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Catatan tambahan:</label>
-                        <p>{{ $consultation->result->notes }}</p>
+                        <p>{{ $consultation->result->notes ?? "-" }}</p>
                       </div>
                     </div>
                     <div class="modal-footer">

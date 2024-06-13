@@ -19,20 +19,31 @@ class ConsultationController extends Controller
 
     public function storeHealthDataForm(Request $request)
     {
+        $validatedData = $request->validate([
+            'birthdate' => 'required|date',
+            'weight' => 'required|numeric',
+            'height' => 'required|numeric',
+            'sleeptime' => 'required|integer',
+            'disease' => 'required|string',
+            'food' => 'required|string',
+            'alergi_makanan' => 'required|string',
+        ]);
+    
         $user = auth()->user();
-        
+    
         $data = HealthData::create(
             [
                 'users_id' => $user->id,
-                'birthdate' => Carbon::parse($request->input('birthdate'))->format('Y-m-d'),
-                'weight' => $request->input('weight'),
-                'height' => $request->input('height'),
-                'sleeptime' => $request->input('sleeptime'),
-                'disease' => $request->input('disease'),
-                'food' => $request->input('food'),
-                'alergi_makanan' => $request->input('alergi_makanan'),
+                'birthdate' => Carbon::parse($validatedData['birthdate'])->format('Y-m-d'),
+                'weight' => $validatedData['weight'],
+                'height' => $validatedData['height'],
+                'sleeptime' => $validatedData['sleeptime'],
+                'disease' => $validatedData['disease'],
+                'food' => $validatedData['food'],
+                'alergi_makanan' => $validatedData['alergi_makanan'],
             ]
         );
+    
         return redirect()->route('jadwal.show');
     }
 
@@ -44,20 +55,28 @@ class ConsultationController extends Controller
         return view('jadwal-konsultasi', compact('doctors'));
     }
 
+    // ConsultationController.php
     public function storeConsultation(Request $request)
     {
+        $validatedData = $request->validate([
+            'doctor_id' => 'required|exists:users,id',
+            'consultation_date' => 'required|date',
+            'consultation_time' => 'required',
+            'location' => 'required|string',
+        ]);
+
         $user = auth()->user();
-    
+
         $data = Consultation::create([
             'patient_id' => $user->id,
-            'doctor_id' => $request->input('doctor_id'),
-            'consultation_date' => Carbon::parse($request->input('consultation_date'))->format('Y-m-d'),
-            'consultation_time' => $request->input('consultation_time'),
-            'location' => $request->input('location'),
+            'doctor_id' => $validatedData['doctor_id'],
+            'consultation_date' => Carbon::parse($validatedData['consultation_date'])->format('Y-m-d'),
+            'consultation_time' => $validatedData['consultation_time'],
+            'location' => $validatedData['location'],
             'consultation_status' => 'pending',
         ]);
+
         return redirect()->route('dashboard');
-        //return redirect()->route('consultation.success');
     }
     
 }   

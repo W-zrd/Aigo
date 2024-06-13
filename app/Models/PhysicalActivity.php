@@ -11,6 +11,7 @@ class PhysicalActivity extends Model
 
     protected $fillable = [
         'users_id',
+        //'id',
         'date',
         'type',
         'distance',

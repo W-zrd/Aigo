@@ -149,10 +149,30 @@ class DashboardController extends Controller
         }
 
         $recommended_distance = Result::where('patient_id', $user->id)->get()->last()->jarak_lari ?? 0;
-        return view('activity-report',
-        compact(
-            'totalSteps', 'totalDistance', 'durationValue', 'durationUnit', 
-            'averageSleepTime', 'filteredHealthData', 'activities', 'predictedCalories', 'recommended_distance'
+        
+        
+        $chartData = PhysicalActivity::whereYear('date', $currentYear)
+        ->whereMonth('date', $currentMonth)
+        ->where('users_id', $user->id)
+        ->orderBy('date')
+        ->get();
+
+        $labels = $chartData->map(function ($activity) {
+            return Carbon::parse($activity->date)->format('d F');
+        });
+
+        $distances = $chartData->map(function ($activity) {
+            return intval($activity->distance);
+        });
+
+        $durations = $chartData->map(function ($activity) {
+            return intval($activity->duration);
+        });
+
+        return view('activity-report', compact(
+            'totalSteps', 'totalDistance', 'durationValue', 'durationUnit',
+            'averageSleepTime', 'filteredHealthData', 'activities', 'predictedCalories',
+            'recommended_distance', 'labels', 'distances', 'durations'
         ));
     }
     
