@@ -62,9 +62,9 @@
                      
                      {{-- RECOMMENDATIONS --}}
                      <div class="col">
-                        <h2 class="customer-name fs-5 ">Recommendations</h2>
+                        <h2 class="customer-name fs-5 ">Summary</h2>
                         <section class="calories-container mt-3">
-                           <div class="icon-wrapper" id="calories" data-toggle="tooltip" data-placement="top" title="Kalori yang harus dibakar">
+                           <div class="icon-wrapper" id="calories" data-toggle="tooltip" data-placement="top" title="Total kalori yang harus dibakar">
                              <img src="{{asset('/asset/svg/flame.svg')}}" alt="Calories icon" class="calories-icon" />
                            </div>
                            <div class="calories-info">
@@ -76,7 +76,7 @@
                          </section>
 
                          <section class="calories-container mt-2">
-                           <div class="icon-wrapper" id="distance" data-toggle="tooltip" data-placement="top" title="Jarak lari yang harus ditempuh">
+                           <div class="icon-wrapper" id="distance" data-toggle="tooltip" data-placement="top" title="Total jarak lari yang sudah ditempuh">
                              <img src="{{asset('/asset/svg/shoes.svg')}}" alt="Calories icon" class="calories-icon" />
                            </div>
                            <div class="calories-info">
@@ -86,7 +86,7 @@
                          </section>
 
                          <section class="calories-container mt-2">
-                           <div class="icon-wrapper" id="sleep" data-toggle="tooltip" data-placement="top" title="Waktu tidur yang disarankan">
+                           <div class="icon-wrapper" id="sleep" data-toggle="tooltip" data-placement="top" title="Waktu tidur pasien">
                              <img src="{{asset('/asset/svg/moon.svg')}}" alt="Calories icon" class="calories-icon" />
                            </div>
                            <div class="calories-info">

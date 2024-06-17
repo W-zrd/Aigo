@@ -65,7 +65,7 @@ class StravaController extends Controller
                 $this->fetchAthleteActivities($data['access_token']);
                 return redirect()->intended(route('dashboard'));
             } else if (auth()->user()->user_role == 'doctor') {
-                // redirect to doctor dashboard (TODO)
+                return redirect()->intended(route('doctor.dashboard'));
             } else {
                 return redirect()->intended(route('admin.dashboard'));
             }
@@ -97,7 +97,7 @@ class StravaController extends Controller
     
                     PhysicalActivity::create([
                         'users_id' => auth()->user()->id,
-                        //'id' => $activity['id'],
+                        'id' => $activity['id'],
                         'date' => $formattedDate,
                         'type' => $activity['type'],
                         'distance' => $activity['distance'],
