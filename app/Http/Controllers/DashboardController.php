@@ -141,7 +141,7 @@ class DashboardController extends Controller
             $averageSleepTime = 0; 
         }
     
-        $latestHealthData = $healthData->last();
+        $latestHealthData = $healthData->first();
         if ($latestHealthData) {
             $predictedCalories = $this->predictCalories($latestHealthData, $user);
         } else {
